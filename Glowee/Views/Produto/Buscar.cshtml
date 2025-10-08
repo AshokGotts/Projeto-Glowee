@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Glowee.Models.Produto>
+@{
+    ViewData["Title"] = "Buscar Produtos";
+    var isLogado = Context.Session.GetInt32("UsuarioId") != null;
+    var usuarioId = Context.Session.GetInt32("UsuarioId");
+    var role = Context.Session.GetString("Role");
+}
+
+<h2>Buscar Produtos</h2>
+
+@if (TempData["Erro"] != null)
+{
+    <div class="alert alert-danger text-center fw-bold fs-4">
+        @TempData["Erro"]
+    </div>
+}
+
+@if (TempData["Sucesso"] != null)
+{
+    <div class="alert alert-success text-center fw-bold fs-4">
+        @TempData["Sucesso"]
+    </div>
+}
+
+@if (isLogado && role == "Vendedor")
+{
+    <div class="mb-3">
+        <a href="/Produto/Create" class="btn btn-success">
+            + Cadastrar novo produto
+        </a>
+    </div>
+}
+
+<form method="get" asp-action="Buscar">
+    <div class="row mb-3">
+        <div class="col">
+            <input type="text" name="termo" class="form-control" placeholder="Buscar por nome ou descrição" />
+        </div>
+        <div class="col">
+            <select name="categoria" class="form-control">
+                <option value="">Todas as categorias</option>
+                <option value="Facial">Facial</option>
+                <option value="Corporal">Corporal</option>
+            </select>
+        </div>
+        <div class="col">
+            <input type="number" name="precoMin" class="form-control" placeholder="Preço mínimo" />
+        </div>
+        <div class="col">
+            <input type="number" name="precoMax" class="form-control" placeholder="Preço máximo" />
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Nenhum produto encontrado.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Vendedor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Model)
+            {
+                <tr>
+                    <td><img src="@produto.ImagemUrl" width="100" /></td>
+                    <td>@produto.Nome</td>
+                    <td>@produto.Descricao</td>
+                    <td>@produto.Categoria</td>
+                    <td>R$ @produto.Preco.ToString("F2")</td>
+                    <td>
+                        @if (isLogado)
+                        {
+                            <p><strong>Nome:</strong> @produto.Vendedor?.Nome</p>
+                            <p><strong>Email:</strong> @produto.Vendedor?.Email</p>
+                        }
+                        else
+                        {
+                            <div style="filter: blur(4px); pointer-events: none;">
+                                <p><strong>Nome:</strong> ********</p>
+                                <p><strong>Email:</strong> ********</p>
+                            </div>
+                            <small class="text-danger">🔒 Necessário estar logado para ver informações do vendedor</small>
+                        }
+                    </td>
+                    <td>
+                        @if (usuarioId != null && role != null && role == "Vendedor" && produto.VendedorId == usuarioId.Value)
+                        {
+                            <a asp-action="MarcarComoVendido" asp-route-id="@produto.ProdutoId" class="btn btn-warning btn-sm me-1">
+                                ✅ Marcar como vendido
+                            </a>
+                            <a asp-action="Excluir" asp-route-id="@produto.ProdutoId" class="btn btn-danger btn-sm">
+                                🗑️ Excluir
+                            </a>
+                        }
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
