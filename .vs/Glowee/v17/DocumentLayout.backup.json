@@ -1,0 +1,207 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224649_CorrigirVendedorIdNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Glowee\\Migrations\\20251008224649_CorrigirVendedorIdNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\models\\venda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\models\\venda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224354_AjusteRelacionamentosVendaProduto02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Glowee\\Migrations\\20251008224354_AjusteRelacionamentosVendaProduto02.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\models\\vendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\models\\vendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224140_AjusteRelacionamentosVendaProduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Glowee\\Migrations\\20251008224140_AjusteRelacionamentosVendaProduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\appdbcontext\\gloweedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\appdbcontext\\gloweedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\controllers\\vendedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\controllers\\vendedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\controllers\\vendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\controllers\\vendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|c:\\users\\lfran\\onedrive\\desktop\\projeto\\glowee\\glowee\\views\\venda\\minhasvendas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2F1C6BC4-3E2B-47CC-9DC1-9A50186142A1}|Glowee\\Glowee.csproj|solutionrelative:glowee\\views\\venda\\minhasvendas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20251008224649_CorrigirVendedorIdNullable.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224649_CorrigirVendedorIdNullable.cs",
+              "RelativeDocumentMoniker": "Glowee\\Migrations\\20251008224649_CorrigirVendedorIdNullable.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224649_CorrigirVendedorIdNullable.cs",
+              "RelativeToolTip": "Glowee\\Migrations\\20251008224649_CorrigirVendedorIdNullable.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:46:49.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20251008224354_AjusteRelacionamentosVendaProduto02.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224354_AjusteRelacionamentosVendaProduto02.cs",
+              "RelativeDocumentMoniker": "Glowee\\Migrations\\20251008224354_AjusteRelacionamentosVendaProduto02.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224354_AjusteRelacionamentosVendaProduto02.cs",
+              "RelativeToolTip": "Glowee\\Migrations\\20251008224354_AjusteRelacionamentosVendaProduto02.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:43:54.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Venda.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Models\\Venda.cs",
+              "RelativeDocumentMoniker": "Glowee\\Models\\Venda.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Models\\Venda.cs",
+              "RelativeToolTip": "Glowee\\Models\\Venda.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA5wBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:43:09.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Vendedor.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Models\\Vendedor.cs",
+              "RelativeDocumentMoniker": "Glowee\\Models\\Vendedor.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Models\\Vendedor.cs",
+              "RelativeToolTip": "Glowee\\Models\\Vendedor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:43:02.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Glowee\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Models\\User.cs",
+              "RelativeToolTip": "Glowee\\Models\\User.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:42:49.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20251008224140_AjusteRelacionamentosVendaProduto.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224140_AjusteRelacionamentosVendaProduto.cs",
+              "RelativeDocumentMoniker": "Glowee\\Migrations\\20251008224140_AjusteRelacionamentosVendaProduto.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Migrations\\20251008224140_AjusteRelacionamentosVendaProduto.cs",
+              "RelativeToolTip": "Glowee\\Migrations\\20251008224140_AjusteRelacionamentosVendaProduto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:41:41.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GloweeDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\AppDbContext\\GloweeDbContext.cs",
+              "RelativeDocumentMoniker": "Glowee\\AppDbContext\\GloweeDbContext.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\AppDbContext\\GloweeDbContext.cs",
+              "RelativeToolTip": "Glowee\\AppDbContext\\GloweeDbContext.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAcwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:39:03.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VendedorController.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Controllers\\VendedorController.cs",
+              "RelativeDocumentMoniker": "Glowee\\Controllers\\VendedorController.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Controllers\\VendedorController.cs",
+              "RelativeToolTip": "Glowee\\Controllers\\VendedorController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:35:04.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "VendaController.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Controllers\\VendaController.cs",
+              "RelativeDocumentMoniker": "Glowee\\Controllers\\VendaController.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Controllers\\VendaController.cs",
+              "RelativeToolTip": "Glowee\\Controllers\\VendaController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:34:59.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProdutoController.cs",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Controllers\\ProdutoController.cs",
+              "RelativeDocumentMoniker": "Glowee\\Controllers\\ProdutoController.cs",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Controllers\\ProdutoController.cs",
+              "RelativeToolTip": "Glowee\\Controllers\\ProdutoController.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T22:34:44.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MinhasVendas.cshtml",
+              "DocumentMoniker": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Views\\Venda\\MinhasVendas.cshtml",
+              "RelativeDocumentMoniker": "Glowee\\Views\\Venda\\MinhasVendas.cshtml",
+              "ToolTip": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Views\\Venda\\MinhasVendas.cshtml",
+              "RelativeToolTip": "Glowee\\Views\\Venda\\MinhasVendas.cshtml",
+              "ViewState": "AgIAABQAAAAAAAAAAAAcwB4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-08T22:10:14.225Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

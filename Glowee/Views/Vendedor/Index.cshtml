@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Glowee.Models.User>
+
+@{
+    ViewData["Title"] = "Gerenciar Vendedores";
+}
+
+<h2 class="mb-4">👥 Gerenciar Vendedores</h2>
+
+@if (TempData["Sucesso"] != null)
+{
+    <div class="alert alert-success fw-bold text-center">@TempData["Sucesso"]</div>
+}
+@if (TempData["Erro"] != null)
+{
+    <div class="alert alert-danger fw-bold text-center">@TempData["Erro"]</div>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Total de Vendas</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vendedor in Model)
+        {
+            <tr>
+                <td>@vendedor.Nome</td>
+                <td>@vendedor.Email</td>
+                <td>
+                    @{
+                        var totalVendas = ViewBag.VendasPorVendedor != null && ViewBag.VendasPorVendedor.ContainsKey(vendedor.UsuarioId)
+                        ? ViewBag.VendasPorVendedor[vendedor.UsuarioId]
+                        : 0;
+                    }
+                    @totalVendas
+                </td>
+                <td>
+                    <form asp-action="Excluir" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este vendedor?');">
+                        <input type="hidden" name="id" value="@vendedor.UsuarioId" />
+                        <button type="submit" class="btn btn-danger btn-sm">X Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
