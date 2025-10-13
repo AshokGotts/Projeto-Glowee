@@ -577,6 +577,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: var(--space-sm);
         font-size: 0.9rem;
     }
+    
 }
 
 /* Responsive Design - Tablet */
@@ -603,6 +604,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 10px 20px;
         font-size: 0.95rem;
     }
+    
 }
 
 /* Responsive Design - Desktop */
@@ -645,6 +647,7 @@ h1, h2, h3, h4, h5, h6 {
     .desktop-auth-buttons {
         gap: var(--space-lg);
     }
+    
 }
 
 /* Large Desktop */
@@ -741,3 +744,4 @@ body.menu-open {
     display: block;
     text-align: center;
 }
+
