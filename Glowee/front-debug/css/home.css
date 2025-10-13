@@ -75,6 +75,32 @@ h1, h2, h3, h4, h5, h6 {
     padding: 8px 12px;
 }
 
+/* Products Link */
+.products-link .btn {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid;
+}
+
+.products-link .btn-outline-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.products-link .btn-outline-secondary:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
 /* Desktop Auth Buttons */
 .desktop-auth-buttons {
     gap: var(--space-md);
@@ -537,6 +563,10 @@ h1, h2, h3, h4, h5, h6 {
     
     .search-box {
         max-width: 200px;
+    }
+    
+    .products-link {
+        display: none; /* Oculta o botão "Ver Produtos" no mobile para economizar espaço */
     }
     
     .slogan-title {
