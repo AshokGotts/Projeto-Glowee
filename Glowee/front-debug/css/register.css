@@ -69,10 +69,30 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 300px;
 }
 
-.search-box .form-control {
-    border: 2px solid var(--light);
+/* Products Link */
+.products-link .btn {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    padding: 8px 16px;
     border-radius: var(--border-radius-md);
-    padding: 8px 12px;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid;
+}
+
+.products-link .btn-outline-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.products-link .btn-outline-secondary:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
 }
 
 /* Desktop Auth Buttons */
@@ -489,8 +509,9 @@ body.menu-open {
 
 /* Responsive Design - Mobile First */
 @media (max-width: 767px) {
-    .search-box {
-        max-width: 200px;
+    .products-link .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
     }
     
     /* Mobile Menu Responsive */
@@ -531,8 +552,9 @@ body.menu-open {
 
 /* Responsive Design - Tablet */
 @media (min-width: 768px) {
-    .search-box {
-        max-width: 300px;
+    .products-link .btn {
+        padding: 8px 16px;
+        font-size: 0.95rem;
     }
     
     /* Desktop Auth Buttons - Tablet */
