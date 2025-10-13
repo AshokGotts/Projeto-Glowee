@@ -20,18 +20,18 @@
     
 </head>
 <body>
-    <!-- Header com Busca -->
+    <!-- Header -->
     <header class="header-nav">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center py-3">
                 <div class="d-flex align-items-center">
                     <img src="../images/favicon.ico" alt="Glowee" class="header-favicon me-2" />
-                    <div class="search-box">
-                        <input type="text" placeholder="Pesquisar" class="form-control" />
-                    </div>
-                    <div class="products-link ms-3">
-                        <a href="products.html" class="btn btn-outline-secondary">
+                    <div class="navbar-links ms-3">
+                        <a href="products.html" class="navbar-link">
                             <i class="fas fa-box me-2"></i>Ver Produtos
+                        </a>
+                        <a href="sales.html" class="navbar-link">
+                            <i class="fas fa-chart-line me-2"></i>Vendas
                         </a>
                     </div>
                 </div>
@@ -51,6 +51,8 @@
                     <!-- Menu Dropdown Mobile -->
                     <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
                         <div class="mobile-menu-content">
+                            <a href="products.html" class="mobile-menu-link">Produtos</a>
+                            <a href="sales.html" class="mobile-menu-link">Vendas</a>
                             <a href="login.html" class="mobile-menu-link">Login</a>
                             <a href="register.html" class="mobile-menu-link">Cadastro</a>
                         </div>
@@ -79,63 +81,110 @@
         </div>
     </section>
 
-    <!-- Produtos em Destaque -->
-    <section id="produtos" class="featured-products py-5">
+    <!-- Carrossel de Produtos -->
+    <section id="produtos" class="products-carousel py-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="section-title text-center mb-5">Produtos em Destaque</h2>
+                    <h2 class="section-title text-center mb-5">Nossos Produtos</h2>
                 </div>
             </div>
             
-            <div class="products-grid-prototype">
-                <!-- Produto 1: Creme Facial -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/products/facial-cream.png" alt="Creme Facial" />
+            <!-- Carrossel Bootstrap -->
+            <div id="productsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                
+                <div class="carousel-inner">
+                    <!-- Produto 1: Creme Facial -->
+                    <div class="carousel-item active">
+                        <div class="carousel-product">
+                            <div class="carousel-image">
+                                <img src="../images/products/facial-cream.png" alt="Creme Facial Hidratante" />
+                            </div>
+                            <div class="carousel-content">
+                                <h3 class="carousel-product-name">Creme Facial Hidratante</h3>
+                                <p class="carousel-product-description">Creme facial com ácido hialurônico e vitamina E, ideal para hidratação profunda e rejuvenescimento da pele.</p>
+                                <p class="carousel-product-category">Facial</p>
+                                <p class="carousel-product-price">R$ 89,90</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Creme Facial</h3>
-                        <p class="product-category">Facial</p>
-                        <p class="product-price">R$ 89,90</p>
+                    
+                    <!-- Produto 2: Sérum -->
+                    <div class="carousel-item">
+                        <div class="carousel-product">
+                            <div class="carousel-image">
+                                <img src="../images/products/serum.png" alt="Sérum Anti-idade" />
+                            </div>
+                            <div class="carousel-content">
+                                <h3 class="carousel-product-name">Sérum Anti-idade</h3>
+                                <p class="carousel-product-description">Sérum concentrado com retinol e peptídeos, combate sinais de envelhecimento e melhora a textura da pele.</p>
+                                <p class="carousel-product-category">Facial</p>
+                                <p class="carousel-product-price">R$ 129,90</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 3: Água Micelar -->
+                    <div class="carousel-item">
+                        <div class="carousel-product">
+                            <div class="carousel-image">
+                                <img src="../images/products/micellar-water.png" alt="Água Micelar Suave" />
+                            </div>
+                            <div class="carousel-content">
+                                <h3 class="carousel-product-name">Água Micelar Suave</h3>
+                                <p class="carousel-product-description">Água micelar delicada para limpeza facial, remove maquiagem e impurezas sem ressecar a pele.</p>
+                                <p class="carousel-product-category">Facial</p>
+                                <p class="carousel-product-price">R$ 45,90</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 4: Creme Hidratante -->
+                    <div class="carousel-item">
+                        <div class="carousel-product">
+                            <div class="carousel-image">
+                                <img src="../images/products/moisturizing-cream.png" alt="Creme Hidratante Corporal" />
+                            </div>
+                            <div class="carousel-content">
+                                <h3 class="carousel-product-name">Creme Hidratante Corporal</h3>
+                                <p class="carousel-product-description">Creme hidratante corporal com manteiga de karité e óleo de coco, proporciona hidratação intensa e duradoura.</p>
+                                <p class="carousel-product-category">Corporal</p>
+                                <p class="carousel-product-price">R$ 65,90</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 5: Sabonete Líquido -->
+                    <div class="carousel-item">
+                        <div class="carousel-product">
+                            <div class="carousel-image">
+                                <img src="../images/products/liquid-soap.png" alt="Sabonete Líquido Natural" />
+                            </div>
+                            <div class="carousel-content">
+                                <h3 class="carousel-product-name">Sabonete Líquido Natural</h3>
+                                <p class="carousel-product-description">Sabonete líquido com ingredientes naturais, limpa suavemente sem agredir a pele, ideal para uso diário.</p>
+                                <p class="carousel-product-category">Corporal</p>
+                                <p class="carousel-product-price">R$ 35,90</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Produto 2: Sérum -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/products/serum.png" alt="Sérum Anti-idade" />
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Sérum Anti-idade</h3>
-                        <p class="product-category">Facial</p>
-                        <p class="product-price">R$ 129,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 3: Água Micelar -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/products/micellar-water.png" alt="Água Micelar" />
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Água Micelar</h3>
-                        <p class="product-category">Facial</p>
-                        <p class="product-price">R$ 45,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 4: Creme Hidratante -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../images/products/moisturizing-cream.png" alt="Creme Hidratante" />
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Creme Hidratante</h3>
-                        <p class="product-category">Corporal</p>
-                        <p class="product-price">R$ 65,90</p>
-                    </div>
-                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#productsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
             </div>
         </div>
     </section>

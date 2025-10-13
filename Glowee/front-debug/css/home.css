@@ -75,30 +75,31 @@ h1, h2, h3, h4, h5, h6 {
     padding: 8px 12px;
 }
 
-/* Products Link */
-.products-link .btn {
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.navbar-link {
     font-family: var(--font-primary);
     font-weight: 500;
-    padding: 8px 16px;
-    border-radius: var(--border-radius-md);
-    transition: all var(--transition-normal);
+    color: var(--primary-dark);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    cursor: pointer;
-    border: 2px solid;
-}
-
-.products-link .btn-outline-secondary {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-normal);
+    border: none;
     background: transparent;
-    color: var(--primary);
-    border-color: var(--primary);
 }
 
-.products-link .btn-outline-secondary:hover {
-    background: var(--primary);
-    color: var(--white);
-    transform: translateY(-2px);
+.navbar-link:hover {
+    color: var(--primary);
+    background: var(--light);
+    transform: translateY(-1px);
 }
 
 /* Desktop Auth Buttons */
@@ -139,6 +140,18 @@ h1, h2, h3, h4, h5, h6 {
 .desktop-auth-buttons .btn-primary:hover {
     background: var(--primary);
     border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.desktop-auth-buttons .btn-outline-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.desktop-auth-buttons .btn-outline-secondary:hover {
+    background: var(--primary);
+    color: var(--white);
     transform: translateY(-2px);
 }
 
@@ -276,8 +289,8 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-md);
 }
 
-/* Featured Products Section */
-.featured-products {
+/* Products Carousel Section */
+.products-carousel {
     background: var(--white);
     padding: var(--space-3xl) 0;
 }
@@ -290,79 +303,128 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--space-xl);
 }
 
-/* Products Grid - Prototype Style (2x2) */
-.products-grid-prototype {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-lg);
-    max-width: 600px;
-    margin: 0 auto;
+/* Carousel Product */
+.carousel-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: var(--space-2xl);
+    gap: var(--space-2xl);
 }
 
-/* Products Grid - Mobile First (fallback) */
-.products-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Product Cards */
-.product-card {
-    background: var(--white);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-md);
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-normal);
-    border: 1px solid var(--light);
-    text-align: center;
-}
-
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.product-image {
-    margin-bottom: var(--space-md);
-    height: 200px;
+.carousel-image {
+    flex: 1;
+    max-width: 400px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--light);
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
 }
 
-
-.product-info {
-    text-align: center;
+.carousel-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform var(--transition-normal);
 }
 
-.product-name {
+.carousel-content {
+    flex: 1;
+    max-width: 400px;
+    text-align: left;
+}
+
+.carousel-product-name {
     font-family: var(--font-secondary);
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--primary-dark);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
 }
 
-.product-category {
+.carousel-product-description {
     font-family: var(--font-primary);
-    font-size: 0.875rem;
+    font-size: 1.1rem;
+    color: rgba(2, 43, 58, 0.8);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+}
+
+.carousel-product-category {
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
     color: var(--primary);
-    margin-bottom: var(--space-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    background: var(--light);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius-sm);
+    display: inline-block;
+    margin-bottom: var(--space-md);
+    font-weight: 500;
 }
 
-.product-price {
-    font-family: var(--font-primary);
-    font-size: 1.125rem;
+.carousel-product-price {
+    font-family: var(--font-secondary);
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary-dark);
-    margin-bottom: 0;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-dark);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: all var(--transition-normal);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+    background: var(--primary);
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--light);
+    border: 2px solid var(--primary);
+    margin: 0 var(--space-xs);
+    transition: all var(--transition-normal);
+}
+
+.carousel-indicators .active {
+    background: var(--primary);
 }
 
 /* Special card for "Ver Todos" */
@@ -556,17 +618,55 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Design - Mobile First */
 @media (max-width: 767px) {
-    .products-grid-prototype {
-        grid-template-columns: 1fr;
-        max-width: 300px;
+    .carousel-product {
+        flex-direction: column;
+        min-height: auto;
+        padding: var(--space-lg);
+        gap: var(--space-lg);
+    }
+    
+    .carousel-image {
+        max-width: 100%;
+        height: 200px;
+    }
+    
+    .carousel-content {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .carousel-product-name {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-product-description {
+        font-size: 1rem;
+    }
+    
+    .carousel-product-price {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-control-prev {
+        left: 10px;
+    }
+    
+    .carousel-control-next {
+        right: 10px;
     }
     
     .search-box {
         max-width: 200px;
     }
     
-    .products-link {
-        display: none; /* Oculta o botão "Ver Produtos" no mobile para economizar espaço */
+    .navbar-links {
+        display: none; /* Oculta os links da navbar no mobile para economizar espaço */
     }
     
     .slogan-title {
@@ -612,9 +712,26 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Design - Tablet */
 @media (min-width: 768px) {
-    .products-grid-prototype {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 600px;
+    .carousel-product {
+        padding: var(--space-xl);
+        gap: var(--space-xl);
+    }
+    
+    .carousel-image {
+        max-width: 350px;
+        height: 250px;
+    }
+    
+    .carousel-product-name {
+        font-size: 1.75rem;
+    }
+    
+    .carousel-product-description {
+        font-size: 1.05rem;
+    }
+    
+    .carousel-product-price {
+        font-size: 1.75rem;
     }
     
     .search-box {
@@ -651,13 +768,26 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.375rem;
     }
     
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-xl);
+    .carousel-product {
+        padding: var(--space-2xl);
+        gap: var(--space-2xl);
     }
     
-    .product-image {
-        height: 220px;
+    .carousel-image {
+        max-width: 400px;
+        height: 300px;
+    }
+    
+    .carousel-product-name {
+        font-size: 2rem;
+    }
+    
+    .carousel-product-description {
+        font-size: 1.1rem;
+    }
+    
+    .carousel-product-price {
+        font-size: 2rem;
     }
     
     .section-title {

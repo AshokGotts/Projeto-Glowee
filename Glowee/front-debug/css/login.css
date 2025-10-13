@@ -69,30 +69,31 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 300px;
 }
 
-/* Products Link */
-.products-link .btn {
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.navbar-link {
     font-family: var(--font-primary);
     font-weight: 500;
-    padding: 8px 16px;
-    border-radius: var(--border-radius-md);
-    transition: all var(--transition-normal);
+    color: var(--primary-dark);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    cursor: pointer;
-    border: 2px solid;
-}
-
-.products-link .btn-outline-secondary {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-normal);
+    border: none;
     background: transparent;
-    color: var(--primary);
-    border-color: var(--primary);
 }
 
-.products-link .btn-outline-secondary:hover {
-    background: var(--primary);
-    color: var(--white);
-    transform: translateY(-2px);
+.navbar-link:hover {
+    color: var(--primary);
+    background: var(--light);
+    transform: translateY(-1px);
 }
 
 /* Desktop Auth Buttons */
@@ -488,9 +489,8 @@ body.menu-open {
 
 /* Responsive Design - Mobile First */
 @media (max-width: 767px) {
-    .products-link .btn {
-        padding: 6px 12px;
-        font-size: 0.9rem;
+    .navbar-links {
+        display: none; /* Oculta os links da navbar no mobile para economizar espaço */
     }
     
     /* Mobile Menu Responsive */
