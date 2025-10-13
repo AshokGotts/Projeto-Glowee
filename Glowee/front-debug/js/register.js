@@ -10,6 +10,7 @@ class RegisterController {
     this.emailInput = null;
     this.passwordInput = null;
     this.confirmPasswordInput = null;
+    this.userTypeSelect = null;
     this.passwordToggle = null;
     this.confirmPasswordToggle = null;
     this.submitButton = null;
@@ -38,6 +39,7 @@ class RegisterController {
     this.emailInput = document.getElementById("email");
     this.passwordInput = document.getElementById("password");
     this.confirmPasswordInput = document.getElementById("confirmPassword");
+    this.userTypeSelect = document.getElementById("userType");
     this.passwordToggle = document.getElementById("passwordToggle");
     this.confirmPasswordToggle = document.getElementById(
       "confirmPasswordToggle"
@@ -49,7 +51,8 @@ class RegisterController {
       !this.fullNameInput ||
       !this.emailInput ||
       !this.passwordInput ||
-      !this.confirmPasswordInput
+      !this.confirmPasswordInput ||
+      !this.userTypeSelect
     ) {
       console.warn("Elementos do formulário de cadastro não encontrados");
       return;
@@ -88,6 +91,7 @@ class RegisterController {
     this.confirmPasswordInput.addEventListener("blur", () =>
       this.validateConfirmPassword()
     );
+    this.userTypeSelect.addEventListener("blur", () => this.validateUserType());
 
     // Limpar erros ao digitar
     this.fullNameInput.addEventListener("input", () =>
@@ -101,6 +105,9 @@ class RegisterController {
     );
     this.confirmPasswordInput.addEventListener("input", () =>
       this.clearFieldError(this.confirmPasswordInput)
+    );
+    this.userTypeSelect.addEventListener("change", () =>
+      this.clearFieldError(this.userTypeSelect)
     );
 
     // Validação de confirmação de senha em tempo real
@@ -124,12 +131,14 @@ class RegisterController {
     const isEmailValid = this.validateEmail();
     const isPasswordValid = this.validatePassword();
     const isConfirmPasswordValid = this.validateConfirmPassword();
+    const isUserTypeValid = this.validateUserType();
 
     if (
       !isFullNameValid ||
       !isEmailValid ||
       !isPasswordValid ||
-      !isConfirmPasswordValid
+      !isConfirmPasswordValid ||
+      !isUserTypeValid
     ) {
       this.showFormError("Por favor, corrija os erros no formulário");
       return;
@@ -140,6 +149,7 @@ class RegisterController {
       fullName: this.fullNameInput.value.trim(),
       email: this.emailInput.value.trim(),
       password: this.passwordInput.value,
+      userType: this.userTypeSelect.value,
     };
 
     try {
@@ -286,6 +296,29 @@ class RegisterController {
     }
 
     this.showFieldSuccess(this.confirmPasswordInput);
+    return true;
+  }
+
+  /**
+   * Valida o campo de tipo de usuário
+   */
+  validateUserType() {
+    const userType = this.userTypeSelect.value;
+
+    if (!userType) {
+      this.showFieldError(this.userTypeSelect, "Tipo de usuário é obrigatório");
+      return false;
+    }
+
+    if (userType !== "cliente" && userType !== "vendedor") {
+      this.showFieldError(
+        this.userTypeSelect,
+        "Selecione um tipo de usuário válido"
+      );
+      return false;
+    }
+
+    this.showFieldSuccess(this.userTypeSelect);
     return true;
   }
 
