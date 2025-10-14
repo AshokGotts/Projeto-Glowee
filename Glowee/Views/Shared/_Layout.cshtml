@@ -34,7 +34,7 @@
                     <div class="navbar-links ms-3 d-none d-md-flex">
                         @if (!string.IsNullOrEmpty(role) && role == "Cliente")
                         {
-                            <!-- Navbar para Cliente: apenas Tela Inicial e Ver Produtos -->
+                            <!-- Navbar para Cliente: Tela Inicial, Ver Produtos e Sobre nós -->
                             @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
                             {
                                 <a asp-controller="Home" asp-action="Index" class="navbar-link">
@@ -43,6 +43,9 @@
                             }
                             <a asp-controller="Produto" asp-action="Index" class="navbar-link">
                                 <i class="fas fa-box me-2"></i>Ver Produtos
+                            </a>
+                            <a asp-controller="Home" asp-action="About" class="navbar-link">
+                                <i class="fas fa-info-circle me-2"></i>Sobre nós
                             </a>
                         }
                         else if (!string.IsNullOrEmpty(role) && role == "Vendedor")
@@ -63,10 +66,13 @@
                             <a asp-controller="Vendedor" asp-action="Index" class="navbar-link">
                                 <i class="fas fa-users me-2"></i>Gerenciar Vendedores
                             </a>
+                            <a asp-controller="Home" asp-action="About" class="navbar-link">
+                                <i class="fas fa-info-circle me-2"></i>Sobre nós
+                            </a>
                         }
                         else
                         {
-                            <!-- Navbar para usuário não logado: Tela Inicial e Ver Produtos -->
+                            <!-- Navbar para usuário não logado: Tela Inicial, Ver Produtos e Sobre nós -->
                             @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
                             {
                                 <a asp-controller="Home" asp-action="Index" class="navbar-link">
@@ -75,6 +81,9 @@
                             }
                             <a asp-controller="Produto" asp-action="Index" class="navbar-link">
                                 <i class="fas fa-box me-2"></i>Ver Produtos
+                            </a>
+                            <a asp-controller="Home" asp-action="About" class="navbar-link">
+                                <i class="fas fa-info-circle me-2"></i>Sobre nós
                             </a>
                         }
                     </div>
@@ -125,12 +134,13 @@
                         <div class="mobile-menu-content">
                             @if (!string.IsNullOrEmpty(role) && role == "Cliente")
                             {
-                                <!-- Menu Mobile para Cliente: apenas Tela Inicial e Produtos -->
+                                <!-- Menu Mobile para Cliente: Tela Inicial, Produtos e Sobre nós -->
                                 @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
                                 {
                                     <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
                                 }
                                 <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
+                                <a asp-controller="Home" asp-action="About" class="mobile-menu-link">Sobre nós</a>
                                 <div class="mobile-menu-divider"></div>
                                 <div class="mobile-menu-user-info">
                                     <span class="mobile-menu-user-name">
@@ -151,6 +161,7 @@
                                 <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
                                 <a asp-controller="Venda" asp-action="MinhasVendas" class="mobile-menu-link">Vendas</a>
                                 <a asp-controller="Vendedor" asp-action="Index" class="mobile-menu-link">Gerenciar Vendedores</a>
+                                <a asp-controller="Home" asp-action="About" class="mobile-menu-link">Sobre nós</a>
                                 <div class="mobile-menu-divider"></div>
                                 <div class="mobile-menu-user-info">
                                     <span class="mobile-menu-user-name">
@@ -170,6 +181,7 @@
                                     <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
                                 }
                                 <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
+                                <a asp-controller="Home" asp-action="About" class="mobile-menu-link">Sobre nós</a>
                                 <div class="mobile-menu-divider"></div>
                                 <a asp-controller="Account" asp-action="Login" class="mobile-menu-link">Login</a>
                                 <a asp-controller="Account" asp-action="Register" class="mobile-menu-link">Cadastro</a>
@@ -191,7 +203,7 @@
             <div class="footer-content section-content">
                 <div class="footer-links">
                     <a asp-controller="Home" asp-action="Privacy" class="footer-link">Privacidade</a>
-                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a asp-controller="Home" asp-action="About" class="footer-link">Sobre nós</a>
                     <a href="#" class="footer-link">Contato</a>
                 </div>
 
