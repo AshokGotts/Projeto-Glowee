@@ -75,63 +75,23 @@ class LoginController {
    * Manipula o envio do formulário
    */
   async handleSubmit(e) {
-    e.preventDefault();
-
-    if (this.isSubmitting) return;
+    if (this.isSubmitting) {
+      e.preventDefault();
+      return;
+    }
 
     // Validação dos campos
     const isEmailValid = this.validateEmail();
     const isPasswordValid = this.validatePassword();
 
     if (!isEmailValid || !isPasswordValid) {
+      e.preventDefault();
       this.showFormError("Por favor, corrija os erros no formulário");
       return;
     }
 
-    // Dados do formulário
-    const formData = {
-      email: this.emailInput.value.trim(),
-      password: this.passwordInput.value,
-    };
-
-    try {
-      this.setLoadingState(true);
-      await this.submitLogin(formData);
-    } catch (error) {
-      this.handleLoginError(error);
-    } finally {
-      this.setLoadingState(false);
-    }
-  }
-
-  /**
-   * Envia os dados de login
-   */
-  async submitLogin(formData) {
-    // Simulação de requisição (substitua pela sua API real)
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Simulação de credenciais válidas
-        if (
-          formData.email === "admin@glowee.com" &&
-          formData.password === "123456"
-        ) {
-          resolve({ success: true, message: "Login realizado com sucesso!" });
-        } else {
-          reject({ success: false, message: "E-mail ou senha incorretos" });
-        }
-      }, 1500);
-    });
-  }
-
-  /**
-   * Manipula erro de login
-   */
-  handleLoginError(error) {
-    console.error("Erro no login:", error);
-    this.showFormError(
-      error.message || "Erro ao fazer login. Tente novamente."
-    );
+    // Se a validação passou, permite o envio do formulário
+    this.setLoadingState(true);
   }
 
   /**

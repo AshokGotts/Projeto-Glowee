@@ -276,60 +276,20 @@ class AddProductController {
    * Manipula o envio do formulário
    */
   async handleSubmit(event) {
-    event.preventDefault();
+    if (this.isSubmitting) {
+      event.preventDefault();
+      return;
+    }
 
     // Valida o formulário
     if (!this.validateForm()) {
+      event.preventDefault();
       this.showMessage("Por favor, corrija os erros no formulário", "error");
       return;
     }
 
-    // Mostra estado de carregamento
+    // Se a validação passou, permite o envio do formulário
     this.setLoadingState(true);
-
-    try {
-      // Simula o envio dos dados (substitua por chamada real à API)
-      await this.submitProductData();
-
-      // Sucesso
-      this.showMessage("Produto cadastrado com sucesso!", "success");
-      this.clearForm();
-
-      // Redireciona após 2 segundos
-      setTimeout(() => {
-        window.location.href = "products.html";
-      }, 2000);
-    } catch (error) {
-      // Erro
-      this.showMessage("Erro ao cadastrar produto. Tente novamente.", "error");
-      console.error("Erro ao cadastrar produto:", error);
-    } finally {
-      // Remove estado de carregamento
-      this.setLoadingState(false);
-    }
-  }
-
-  /**
-   * Simula o envio dos dados do produto
-   */
-  async submitProductData() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Simula sucesso 90% das vezes
-        if (Math.random() > 0.1) {
-          resolve({
-            id: Date.now(),
-            name: this.productName.value,
-            description: this.productDescription.value,
-            category: this.productCategory.value,
-            price: parseFloat(this.productPrice.value),
-            image: this.productImage.files[0]?.name || "default.png",
-          });
-        } else {
-          reject(new Error("Erro simulado"));
-        }
-      }, 2000);
-    });
   }
 
   /**

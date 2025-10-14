@@ -32,19 +32,49 @@
                 <div class="d-flex align-items-center">
                     <img src="~/images/branding/favicon.ico" alt="Glowee" class="header-favicon me-2" />
                     <div class="navbar-links ms-3 d-none d-md-flex">
-                        <a asp-controller="Home" asp-action="Index" class="navbar-link">
-                            <i class="fas fa-home me-2"></i>Tela Inicial
-                        </a>
-                        <a asp-controller="Produto" asp-action="Index" class="navbar-link">
-                            <i class="fas fa-box me-2"></i>Ver Produtos
-                        </a>
-                        @if (!string.IsNullOrEmpty(role) && role == "Vendedor")
+                        @if (!string.IsNullOrEmpty(role) && role == "Cliente")
                         {
+                            <!-- Navbar para Cliente: apenas Tela Inicial e Ver Produtos -->
+                            @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
+                            {
+                                <a asp-controller="Home" asp-action="Index" class="navbar-link">
+                                    <i class="fas fa-home me-2"></i>Tela Inicial
+                                </a>
+                            }
+                            <a asp-controller="Produto" asp-action="Index" class="navbar-link">
+                                <i class="fas fa-box me-2"></i>Ver Produtos
+                            </a>
+                        }
+                        else if (!string.IsNullOrEmpty(role) && role == "Vendedor")
+                        {
+                            <!-- Navbar para Vendedor: todas as opções -->
+                            @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
+                            {
+                                <a asp-controller="Home" asp-action="Index" class="navbar-link">
+                                    <i class="fas fa-home me-2"></i>Tela Inicial
+                                </a>
+                            }
+                            <a asp-controller="Produto" asp-action="Index" class="navbar-link">
+                                <i class="fas fa-box me-2"></i>Ver Produtos
+                            </a>
                             <a asp-controller="Venda" asp-action="MinhasVendas" class="navbar-link">
                                 <i class="fas fa-chart-line me-2"></i>Vendas
                             </a>
                             <a asp-controller="Vendedor" asp-action="Index" class="navbar-link">
                                 <i class="fas fa-users me-2"></i>Gerenciar Vendedores
+                            </a>
+                        }
+                        else
+                        {
+                            <!-- Navbar para usuário não logado: Tela Inicial e Ver Produtos -->
+                            @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
+                            {
+                                <a asp-controller="Home" asp-action="Index" class="navbar-link">
+                                    <i class="fas fa-home me-2"></i>Tela Inicial
+                                </a>
+                            }
+                            <a asp-controller="Produto" asp-action="Index" class="navbar-link">
+                                <i class="fas fa-box me-2"></i>Ver Produtos
                             </a>
                         }
                     </div>
@@ -55,19 +85,32 @@
                 <div class="desktop-auth-buttons d-none d-md-flex align-items-center gap-3">
                     @if (string.IsNullOrEmpty(role))
                     {
+                        <!-- Usuário não logado: Login e Cadastro -->
                         <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary">Login</a>
                         <a asp-controller="Account" asp-action="Register" class="btn btn-primary">Cadastro</a>
                     }
-                    else
+                    else if (role == "Cliente")
                     {
-                        <span class="navbar-link">Olá, @nome!</span>
-                        @if (role == "Vendedor")
-                        {
-                            <a asp-controller="Produto" asp-action="Create" class="btn btn-outline-secondary">
-                                <i class="fas fa-plus me-1"></i>Cadastrar Produto
-                            </a>
-                        }
-                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-primary">Sair</a>
+                        <!-- Cliente logado: Saudação e botão Sair -->
+                        <span class="navbar-link text-primary fw-medium">
+                            <i class="fas fa-user me-2"></i>Olá, @nome!
+                        </span>
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-primary">
+                            <i class="fas fa-sign-out-alt me-1"></i>Sair
+                        </a>
+                    }
+                    else if (role == "Vendedor")
+                    {
+                        <!-- Vendedor logado: Saudação, Cadastrar Produto e Sair -->
+                        <span class="navbar-link text-primary fw-medium">
+                            <i class="fas fa-user me-2"></i>Olá, @nome!
+                        </span>
+                        <a asp-controller="Produto" asp-action="Create" class="btn btn-outline-secondary">
+                            <i class="fas fa-plus me-1"></i>Cadastrar Produto
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-primary">
+                            <i class="fas fa-sign-out-alt me-1"></i>Sair
+                        </a>
                     }
                 </div>
 
@@ -80,25 +123,56 @@
                     <!-- Menu Dropdown Mobile -->
                     <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
                         <div class="mobile-menu-content">
-                            <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
-                            <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
-                            @if (!string.IsNullOrEmpty(role) && role == "Vendedor")
+                            @if (!string.IsNullOrEmpty(role) && role == "Cliente")
                             {
+                                <!-- Menu Mobile para Cliente: apenas Tela Inicial e Produtos -->
+                                @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
+                                {
+                                    <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
+                                }
+                                <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
+                                <div class="mobile-menu-divider"></div>
+                                <div class="mobile-menu-user-info">
+                                    <span class="mobile-menu-user-name">
+                                        <i class="fas fa-user me-2"></i>Olá, @nome!
+                                    </span>
+                                </div>
+                                <a asp-controller="Account" asp-action="Logout" class="mobile-menu-link">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Sair
+                                </a>
+                            }
+                            else if (!string.IsNullOrEmpty(role) && role == "Vendedor")
+                            {
+                                <!-- Menu Mobile para Vendedor: todas as opções -->
+                                @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
+                                {
+                                    <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
+                                }
+                                <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
                                 <a asp-controller="Venda" asp-action="MinhasVendas" class="mobile-menu-link">Vendas</a>
                                 <a asp-controller="Vendedor" asp-action="Index" class="mobile-menu-link">Gerenciar Vendedores</a>
-                            }
-                            @if (string.IsNullOrEmpty(role))
-                            {
-                                <a asp-controller="Account" asp-action="Login" class="mobile-menu-link">Login</a>
-                                <a asp-controller="Account" asp-action="Register" class="mobile-menu-link">Cadastro</a>
+                                <div class="mobile-menu-divider"></div>
+                                <div class="mobile-menu-user-info">
+                                    <span class="mobile-menu-user-name">
+                                        <i class="fas fa-user me-2"></i>Olá, @nome!
+                                    </span>
+                                </div>
+                                <a asp-controller="Produto" asp-action="Create" class="mobile-menu-link">Cadastrar Produto</a>
+                                <a asp-controller="Account" asp-action="Logout" class="mobile-menu-link">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Sair
+                                </a>
                             }
                             else
                             {
-                                @if (role == "Vendedor")
+                                <!-- Menu Mobile para usuário não logado -->
+                                @if (!(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["Action"]?.ToString() == "Index"))
                                 {
-                                    <a asp-controller="Produto" asp-action="Create" class="mobile-menu-link">Cadastrar Produto</a>
+                                    <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
                                 }
-                                <a asp-controller="Account" asp-action="Logout" class="mobile-menu-link">Sair</a>
+                                <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
+                                <div class="mobile-menu-divider"></div>
+                                <a asp-controller="Account" asp-action="Login" class="mobile-menu-link">Login</a>
+                                <a asp-controller="Account" asp-action="Register" class="mobile-menu-link">Cadastro</a>
                             }
                         </div>
                     </div>

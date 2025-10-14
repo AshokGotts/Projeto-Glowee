@@ -122,9 +122,10 @@ class RegisterController {
    * Manipula o envio do formulário
    */
   async handleSubmit(e) {
-    e.preventDefault();
-
-    if (this.isSubmitting) return;
+    if (this.isSubmitting) {
+      e.preventDefault();
+      return;
+    }
 
     // Validação dos campos
     const isFullNameValid = this.validateFullName();
@@ -140,56 +141,13 @@ class RegisterController {
       !isConfirmPasswordValid ||
       !isUserTypeValid
     ) {
+      e.preventDefault();
       this.showFormError("Por favor, corrija os erros no formulário");
       return;
     }
 
-    // Dados do formulário
-    const formData = {
-      fullName: this.fullNameInput.value.trim(),
-      email: this.emailInput.value.trim(),
-      password: this.passwordInput.value,
-      userType: this.userTypeSelect.value,
-    };
-
-    try {
-      this.setLoadingState(true);
-      await this.submitRegister(formData);
-    } catch (error) {
-      this.handleRegisterError(error);
-    } finally {
-      this.setLoadingState(false);
-    }
-  }
-
-  /**
-   * Envia os dados de cadastro
-   */
-  async submitRegister(formData) {
-    // Simulação de requisição (substitua pela sua API real)
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Simulação de sucesso
-        if (formData.email && formData.password && formData.fullName) {
-          resolve({
-            success: true,
-            message: "Cadastro realizado com sucesso!",
-          });
-        } else {
-          reject({ success: false, message: "Erro ao processar cadastro" });
-        }
-      }, 1500);
-    });
-  }
-
-  /**
-   * Manipula erro de cadastro
-   */
-  handleRegisterError(error) {
-    console.error("Erro no cadastro:", error);
-    this.showFormError(
-      error.message || "Erro ao fazer cadastro. Tente novamente."
-    );
+    // Se a validação passou, permite o envio do formulário
+    this.setLoadingState(true);
   }
 
   /**
@@ -416,26 +374,6 @@ class RegisterController {
     setTimeout(() => {
       this.removeFormMessage();
     }, 5000);
-  }
-
-  /**
-   * Mostra sucesso do formulário
-   */
-  showFormSuccess(message) {
-    this.removeFormMessage();
-
-    const successDiv = document.createElement("div");
-    successDiv.className = "form-success";
-    successDiv.style.textAlign = "center";
-    successDiv.style.marginTop = "var(--space-md)";
-    successDiv.textContent = message;
-
-    this.form.appendChild(successDiv);
-
-    // Redireciona para login após 2 segundos
-    setTimeout(() => {
-      window.location.href = "login.html";
-    }, 2000);
   }
 
   /**

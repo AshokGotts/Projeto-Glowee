@@ -258,22 +258,6 @@ class ManageVendorsController {
   }
 
   /**
-   * Simula a exclusão do vendedor
-   */
-  async deleteVendor(vendorId) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Simula sucesso 90% das vezes
-        if (Math.random() > 0.1) {
-          resolve({ id: vendorId, deleted: true });
-        } else {
-          reject(new Error("Erro simulado"));
-        }
-      }, 1500);
-    });
-  }
-
-  /**
    * Remove o vendedor da lista
    */
   removeVendorFromList(vendorId) {

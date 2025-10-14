@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Glowee")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+241fe4ae95784573c75982ad91208e45d27142ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10814ec3f8687d3540513e8c3cbeed6fab45ed83")]
 [assembly: System.Reflection.AssemblyProductAttribute("Glowee")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Glowee")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

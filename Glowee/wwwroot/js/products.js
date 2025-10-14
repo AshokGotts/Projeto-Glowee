@@ -34,7 +34,7 @@ class ProductsController {
    * Configura os elementos DOM necessários
    */
   setupElements() {
-    // Verifica se o usuário está logado (simulação)
+    // Verifica se o usuário está logado
     this.checkLoginStatus();
 
     // Configura os elementos de filtro e busca
@@ -58,16 +58,12 @@ class ProductsController {
 
   /**
    * Verifica o status de login do usuário
-   * Em uma aplicação real, isso seria verificado via API ou localStorage
+   * Verifica se há dados de sessão no servidor
    */
   checkLoginStatus() {
-    // Simulação: verifica se há um token de login no localStorage
-    const loginToken = localStorage.getItem("glowee_login_token");
-    this.isLoggedIn = !!loginToken;
-
-    // Para demonstração, você pode forçar o status alterando esta linha:
-    // this.isLoggedIn = true; // Para testar como usuário logado
-    // this.isLoggedIn = false; // Para testar como usuário não logado
+    // Em uma aplicação ASP.NET Core MVC, o status de login é verificado no servidor
+    // O JavaScript apenas aplica regras de visibilidade baseadas nos dados do servidor
+    this.isLoggedIn = false; // Será definido pelo servidor via Razor
 
     console.log(`Usuário ${this.isLoggedIn ? "logado" : "não logado"}`);
   }
@@ -308,33 +304,6 @@ class ProductsController {
   }
 
   /**
-   * Simula login do usuário
-   */
-  login() {
-    localStorage.setItem("glowee_login_token", "demo_token_123");
-    this.isLoggedIn = true;
-    this.applyVisibilityRules();
-    console.log("Usuário logado com sucesso!");
-  }
-
-  /**
-   * Simula logout do usuário
-   */
-  logout() {
-    localStorage.removeItem("glowee_login_token");
-    this.isLoggedIn = false;
-    this.applyVisibilityRules();
-    console.log("Usuário deslogado com sucesso!");
-  }
-
-  /**
-   * Verifica se o usuário está logado
-   */
-  isUserLoggedIn() {
-    return this.isLoggedIn;
-  }
-
-  /**
    * Extrai o preço numérico do texto
    */
   extractPrice(priceText) {
@@ -439,7 +408,5 @@ const productsController = new ProductsController();
 window.ProductsController = ProductsController;
 window.productsController = productsController;
 
-// Funções globais para demonstração (podem ser chamadas do console)
-window.loginDemo = () => productsController.login();
-window.logoutDemo = () => productsController.logout();
+// Função global para atualizar visibilidade (pode ser chamada do console)
 window.refreshProducts = () => productsController.refreshVisibility();
