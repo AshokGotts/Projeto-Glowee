@@ -223,6 +223,7 @@ h6 {
   padding: var(--space-3xl) 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .login-container {
@@ -232,6 +233,9 @@ h6 {
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--light);
   text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 /* Login Logo */
@@ -515,6 +519,7 @@ body.menu-open {
   .login-container {
     padding: var(--space-xl);
     margin: var(--space-md);
+    max-width: calc(100% - 2rem);
   }
 
   .login-title {
@@ -578,7 +583,7 @@ body.menu-open {
   /* Login Responsive - Desktop */
   .login-container {
     padding: var(--space-3xl);
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
   }
 

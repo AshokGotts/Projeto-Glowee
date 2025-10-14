@@ -3,11 +3,11 @@
 **/.DS_Store
 
 # .NET Build outputs
-Glowee/obj/
-Glowee/bin/
-Glowee/GloweeLocal.db
-bin/
-obj/
+Glowee/obj/*
+Glowee/bin/*
+Glowee/GloweeLocal.*
+bin/*
+obj/*
 *.user
 *.suo
 *.cache

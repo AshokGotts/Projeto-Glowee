@@ -55,15 +55,11 @@
 }
 
 /* Ajustar formulários para usar mais espaço */
-.login-container,
-.register-container,
 .add-product-container {
   max-width: 600px;
 }
 
 @media (min-width: 1200px) {
-  .login-container,
-  .register-container,
   .add-product-container {
     max-width: 700px;
   }
