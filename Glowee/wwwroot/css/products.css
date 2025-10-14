@@ -314,7 +314,7 @@ h6 {
 /* Products Grid */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
   max-width: 1200px;
   margin: 0 auto;
@@ -477,6 +477,59 @@ h6 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   pointer-events: none;
   white-space: nowrap;
+}
+
+/* Product Action Buttons */
+.product-card .btn {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal);
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-bottom: var(--space-xs);
+}
+
+.product-card .btn:last-child {
+  margin-bottom: 0;
+}
+
+.product-card .btn-success {
+  background: #28a745;
+  border-color: #28a745;
+  color: var(--white);
+}
+
+.product-card .btn-success:hover {
+  background: #218838;
+  border-color: #1e7e34;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.product-card .btn-danger {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: var(--white);
+}
+
+.product-card .btn-danger:hover {
+  background: #c82333;
+  border-color: #bd2130;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.product-card .btn i {
+  margin-right: var(--space-xs);
+  font-size: 0.8rem;
 }
 
 /* Modal Styles */
@@ -728,7 +781,7 @@ body.menu-open {
 
   /* Products Responsive - Desktop */
   .products-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-lg);
   }
 
@@ -748,7 +801,7 @@ body.menu-open {
 /* Responsive Design - Large Desktop */
 @media (min-width: 1400px) {
   .products-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
   }
 }
@@ -756,7 +809,7 @@ body.menu-open {
 /* Responsive Design - Extra Large Desktop */
 @media (min-width: 1600px) {
   .products-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-2xl);
   }
 }
