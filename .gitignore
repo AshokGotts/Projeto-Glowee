@@ -5,6 +5,7 @@
 # .NET Build outputs
 Glowee/obj/
 Glowee/bin/
+Glowee/GloweeLocal.db
 bin/
 obj/
 *.user
