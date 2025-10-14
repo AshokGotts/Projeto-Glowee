@@ -5,151 +5,136 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/layout-expanded.css" asp-append-version="true" />
 }
 
 <!-- About Section -->
 <section class="about-section">
     <div class="container-fluid">
-        <div class="row justify-content-center section-content">
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
-                <h1 class="text-center mb-5">Sobre a Glowee</h1>
-                
                 <div class="about-content">
-                    <!-- Hero Section -->
-                    <div class="text-center mb-5">
-                        <h2 class="mb-4">Transformando a beleza em conexão</h2>
-                        <p class="lead">
+                    <!-- About Hero -->
+                    <div class="about-hero">
+                        <h1 class="about-title">Sobre a Glowee</h1>
+                        <p class="about-subtitle">
+                            Transformando a beleza em conexão através de uma plataforma que conecta 
+                            vendedores talentosos com clientes que buscam produtos excepcionais.
+                        </p>
+                    </div>
+                    <!-- About Text -->
+                    <div class="about-text">
+                        <p class="about-paragraph">
                             A Glowee é mais que uma plataforma de e-commerce. Somos uma comunidade dedicada 
                             a conectar pessoas através da beleza, oferecendo produtos de qualidade e 
                             experiências únicas que realçam sua confiança e bem-estar.
                         </p>
-                    </div>
-
-                    <!-- Nossa História -->
-                    <div class="mb-5">
-                        <h3 class="mb-4">Nossa História</h3>
-                        <p class="mb-3">
-                            Fundada em 2024, a Glowee nasceu da paixão por conectar pessoas através da beleza. 
+                        <p class="about-paragraph">
+                            Fundada em 2025, a Glowee nasceu da paixão por conectar pessoas através da beleza. 
                             Nossa missão é democratizar o acesso a produtos de qualidade, criando uma ponte 
                             entre vendedores talentosos e clientes que buscam o melhor em cuidados pessoais.
                         </p>
-                        <p>
+                        <p class="about-paragraph">
                             Acreditamos que a beleza vai além da estética - é sobre confiança, autoestima e 
                             bem-estar. Por isso, cada produto em nossa plataforma é cuidadosamente selecionado 
                             para oferecer não apenas qualidade, mas também uma experiência transformadora.
                         </p>
                     </div>
 
-                    <!-- Nossos Valores -->
-                    <div class="mb-5">
-                        <h3 class="text-center mb-4">Nossos Valores</h3>
+                    <!-- Values Section -->
+                    <div class="about-values">
+                        <h2 class="values-title">Nossos Valores</h2>
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-star fa-2x text-primary"></i>
-                                        </div>
-                                        <h5 class="card-title">Qualidade</h5>
-                                        <p class="card-text">
-                                            Selecionamos apenas produtos que atendem aos mais altos padrões de qualidade e eficácia.
-                                        </p>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-star"></i>
                                     </div>
+                                    <h3 class="value-title">Qualidade</h3>
+                                    <p class="value-description">
+                                        Selecionamos apenas produtos que atendem aos mais altos padrões de qualidade e eficácia.
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-handshake fa-2x text-primary"></i>
-                                        </div>
-                                        <h5 class="card-title">Confiança</h5>
-                                        <p class="card-text">
-                                            Construímos relacionamentos duradouros baseados em transparência e confiabilidade.
-                                        </p>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-handshake"></i>
                                     </div>
+                                    <h3 class="value-title">Confiança</h3>
+                                    <p class="value-description">
+                                        Construímos relacionamentos duradouros baseados em transparência e confiabilidade.
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-users fa-2x text-primary"></i>
-                                        </div>
-                                        <h5 class="card-title">Comunidade</h5>
-                                        <p class="card-text">
-                                            Fomentamos uma comunidade onde todos podem crescer e se apoiar mutuamente.
-                                        </p>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-users"></i>
                                     </div>
+                                    <h3 class="value-title">Comunidade</h3>
+                                    <p class="value-description">
+                                        Fomentamos uma comunidade onde todos podem crescer e se apoiar mutuamente.
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body text-center">
-                                        <div class="mb-3">
-                                            <i class="fas fa-leaf fa-2x text-primary"></i>
-                                        </div>
-                                        <h5 class="card-title">Sustentabilidade</h5>
-                                        <p class="card-text">
-                                            Promovemos práticas sustentáveis e produtos que respeitam o meio ambiente.
-                                        </p>
+                                <div class="value-card">
+                                    <div class="value-icon">
+                                        <i class="fas fa-leaf"></i>
                                     </div>
+                                    <h3 class="value-title">Sustentabilidade</h3>
+                                    <p class="value-description">
+                                        Promovemos práticas sustentáveis e produtos que respeitam o meio ambiente.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Nossa Missão -->
-                    <div class="mb-5">
-                        <h3 class="text-center mb-4">Nossa Missão</h3>
-                        <p class="text-center mb-4">
-                            Democratizar o acesso à beleza de qualidade, conectando vendedores talentosos 
-                            com clientes que buscam produtos excepcionais. Queremos que cada pessoa se sinta 
-                            confiante e radiante, independentemente de seu orçamento ou localização.
-                        </p>
-                        <div class="row text-center">
-                            <div class="col-6 col-md-3 mb-3">
-                                <div class="p-3">
-                                    <h4 class="text-primary">500+</h4>
-                                    <p class="mb-0">Produtos</p>
+                    <!-- Mission Section -->
+                    <div class="about-mission">
+                        <div class="mission-content">
+                            <h2 class="mission-title">Nossa Missão</h2>
+                            <p class="mission-text">
+                                Democratizar o acesso à beleza de qualidade, conectando vendedores talentosos 
+                                com clientes que buscam produtos excepcionais. Queremos que cada pessoa se sinta 
+                                confiante e radiante, independentemente de seu orçamento ou localização.
+                            </p>
+                            @* <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">500+</div>
+                                    <div class="stat-label">Produtos</div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-md-3 mb-3">
-                                <div class="p-3">
-                                    <h4 class="text-primary">100+</h4>
-                                    <p class="mb-0">Vendedores</p>
+                                <div class="stat-item">
+                                    <div class="stat-number">100+</div>
+                                    <div class="stat-label">Vendedores</div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-md-3 mb-3">
-                                <div class="p-3">
-                                    <h4 class="text-primary">1000+</h4>
-                                    <p class="mb-0">Clientes</p>
+                                <div class="stat-item">
+                                    <div class="stat-number">1000+</div>
+                                    <div class="stat-label">Clientes</div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-md-3 mb-3">
-                                <div class="p-3">
-                                    <h4 class="text-primary">98%</h4>
-                                    <p class="mb-0">Satisfação</p>
+                                <div class="stat-item">
+                                    <div class="stat-number">98%</div>
+                                    <div class="stat-label">Satisfação</div>
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                     </div>
 
 
-                    <!-- Call to Action -->
-                    <div class="text-center">
-                        <h3 class="mb-4">Faça parte da nossa comunidade</h3>
-                        <p class="mb-4">
+                    <!-- CTA Section -->
+                    <div class="cta-section">
+                        <h2 class="cta-title">Faça parte da nossa comunidade</h2>
+                        <p class="cta-text">
                             Seja você um vendedor em busca de novos clientes ou um cliente em busca de 
                             produtos incríveis, a Glowee é o lugar ideal para você.
                         </p>
-                        <div>
-                            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg me-3">
-                                <i class="fas fa-user-plus me-2"></i>Cadastre-se
+                        <div class="cta-buttons">
+                            <a asp-controller="Account" asp-action="Register" class="btn btn-primary">
+                                <i class="fas fa-user-plus"></i>Cadastre-se
                             </a>
-                            <a asp-controller="Produto" asp-action="Index" class="btn btn-outline-primary btn-lg">
-                                <i class="fas fa-shopping-bag me-2"></i>Ver Produtos
+                            <a asp-controller="Produto" asp-action="Index" class="btn btn-outline-primary">
+                                <i class="fas fa-shopping-bag"></i>Ver Produtos
                             </a>
                         </div>
                     </div>

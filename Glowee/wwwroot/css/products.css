@@ -226,6 +226,9 @@ h6 {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--light);
   margin-bottom: var(--space-xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Search Container */
@@ -302,6 +305,10 @@ h6 {
   font-weight: 600;
   color: var(--primary-dark);
   margin-bottom: var(--space-2xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-lg);
 }
 
 /* Products Grid */
@@ -309,8 +316,9 @@ h6 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-xl);
-  max-width: none;
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
 }
 
 /* Product Card */
