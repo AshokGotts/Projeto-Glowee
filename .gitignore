@@ -3,6 +3,8 @@
 **/.DS_Store
 
 # .NET Build outputs
+Glowee/obj/
+Glowee/bin/
 bin/
 obj/
 *.user
