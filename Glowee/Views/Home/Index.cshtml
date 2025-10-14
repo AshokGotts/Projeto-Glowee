@@ -3,7 +3,155 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Bem-vindo à Glowee 🌸</h1>
-<p>Explore nossos cosméticos incríveis e encontre o que combina com você.</p>
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+}
 
-<a class="btn btn-primary" asp-controller="Produto" asp-action="Index">Ver Produtos</a>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container-fluid">
+        <div class="hero-banner">
+            <div class="hero-slogan">
+                <img src="~/images/branding/logo.png" alt="Glowee" class="hero-logo mb-6" />
+                <h1 class="slogan-title">Sua pele merece esse brilho!</h1>
+                <p class="slogan-subtitle">
+                    Dermocosméticos que celebram sua autenticidade e juventude natural
+                </p>
+                <div class="slogan-keywords">
+                    <span class="keyword">✨ Autenticidade</span>
+                    <span class="keyword">🌸 Juventude</span>
+                    <span class="keyword">💫 Autoestima</span>
+                    <span class="keyword">🌿 Natural</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Carrossel de Produtos -->
+<section id="produtos" class="products-carousel py-5">
+    <div class="container-fluid">
+        <div class="row section-content">
+            <div class="col-12">
+                <h2 class="section-title text-center mb-5">Nossos Produtos</h2>
+            </div>
+        </div>
+
+        <!-- Carrossel Bootstrap -->
+        <div id="productsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Produto 1: Creme Facial -->
+                <div class="carousel-item active">
+                    <div class="carousel-product">
+                        <div class="carousel-image">
+                            <img src="~/images/products/facial-cream.png" alt="Creme Facial Hidratante" />
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-product-name">Creme Facial Hidratante</h3>
+                            <p class="carousel-product-description">
+                                Creme facial com ácido hialurônico e vitamina E, ideal para
+                                hidratação profunda e rejuvenescimento da pele.
+                            </p>
+                            <p class="carousel-product-category">Facial</p>
+                            <p class="carousel-product-price">R$ 89,90</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 2: Sérum -->
+                <div class="carousel-item">
+                    <div class="carousel-product">
+                        <div class="carousel-image">
+                            <img src="~/images/products/serum.png" alt="Sérum Anti-idade" />
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-product-name">Sérum Anti-idade</h3>
+                            <p class="carousel-product-description">
+                                Sérum concentrado com retinol e peptídeos, combate sinais de
+                                envelhecimento e melhora a textura da pele.
+                            </p>
+                            <p class="carousel-product-category">Facial</p>
+                            <p class="carousel-product-price">R$ 129,90</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 3: Água Micelar -->
+                <div class="carousel-item">
+                    <div class="carousel-product">
+                        <div class="carousel-image">
+                            <img src="~/images/products/micellar-water.png" alt="Água Micelar Suave" />
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-product-name">Água Micelar Suave</h3>
+                            <p class="carousel-product-description">
+                                Água micelar delicada para limpeza facial, remove maquiagem
+                                e impurezas sem ressecar a pele.
+                            </p>
+                            <p class="carousel-product-category">Facial</p>
+                            <p class="carousel-product-price">R$ 45,90</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 4: Creme Hidratante -->
+                <div class="carousel-item">
+                    <div class="carousel-product">
+                        <div class="carousel-image">
+                            <img src="~/images/products/moisturizing-cream.png" alt="Creme Hidratante Corporal" />
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-product-name">Creme Hidratante Corporal</h3>
+                            <p class="carousel-product-description">
+                                Creme hidratante corporal com manteiga de karité e óleo de
+                                coco, proporciona hidratação intensa e duradoura.
+                            </p>
+                            <p class="carousel-product-category">Corporal</p>
+                            <p class="carousel-product-price">R$ 65,90</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 5: Sabonete Líquido -->
+                <div class="carousel-item">
+                    <div class="carousel-product">
+                        <div class="carousel-image">
+                            <img src="~/images/products/liquid-soap.png" alt="Sabonete Líquido Natural" />
+                        </div>
+                        <div class="carousel-content">
+                            <h3 class="carousel-product-name">Sabonete Líquido Natural</h3>
+                            <p class="carousel-product-description">
+                                Sabonete líquido com ingredientes naturais, limpa suavemente
+                                sem agredir a pele, ideal para uso diário.
+                            </p>
+                            <p class="carousel-product-category">Corporal</p>
+                            <p class="carousel-product-price">R$ 35,90</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#productsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/mobile-menu.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+}

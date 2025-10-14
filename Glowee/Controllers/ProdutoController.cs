@@ -15,11 +15,15 @@ namespace Glowee.Controllers
     {
         private readonly GloweeDbContext _context;
         private readonly IConfiguration _config;
+        private readonly AzureBlobService _azureBlobService;
+        private readonly IWebHostEnvironment _environment;
 
-        public ProdutoController(GloweeDbContext context, IConfiguration config)
+        public ProdutoController(GloweeDbContext context, IConfiguration config, AzureBlobService azureBlobService, IWebHostEnvironment environment)
         {
             _context = context;
             _config = config;
+            _azureBlobService = azureBlobService;
+            _environment = environment;
         }
 
         // Exibe apenas produtos disponíveis
@@ -74,22 +78,31 @@ namespace Glowee.Controllers
                 return View(produto);
             }
 
-            // Upload para Azure Blob Storage
-            var connectionString = _config["AzureStorage:ConnectionString"];
-            var containerName = _config["AzureStorage:ContainerName"];
-
-            var blobContainer = new BlobContainerClient(connectionString, containerName);
-            await blobContainer.CreateIfNotExistsAsync();
-
-            var blobName = Guid.NewGuid().ToString() + Path.GetExtension(Imagem.FileName);
-            var blobClient = blobContainer.GetBlobClient(blobName);
-
-            using (var stream = Imagem.OpenReadStream())
+            // Upload híbrido: local em desenvolvimento, Azure em produção
+            if (_environment.IsDevelopment())
             {
-                await blobClient.UploadAsync(stream, true);
-            }
+                // Desenvolvimento: salvar localmente
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
 
-            produto.ImagemUrl = blobClient.Uri.ToString();
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Imagem.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Imagem.CopyToAsync(stream);
+                }
+
+                produto.ImagemUrl = $"/uploads/{fileName}";
+            }
+            else
+            {
+                // Produção: usar Azure Blob Storage
+                produto.ImagemUrl = await _azureBlobService.UploadAsync(Imagem);
+            }
             produto.VendedorId = vendedorId.Value;
 
             ModelState.Remove(nameof(produto.Vendas));
@@ -162,21 +175,21 @@ namespace Glowee.Controllers
             {
                 Console.WriteLine("Produto não encontrado");
                 TempData["Erro"] = "Produto não encontrado.";
-                return RedirectToAction("Buscar");
+                return RedirectToAction("Index");
             }
 
             if (produto.VendedorId != vendedorId.Value)
             {
                 Console.WriteLine("Produto pertence a outro vendedor");
                 TempData["Erro"] = "PRODUTO PERTENCE A OUTRO VENDEDOR";
-                return RedirectToAction("Buscar");
+                return RedirectToAction("Index");
             }
 
             if (produto.Vendido)
             {
                 Console.WriteLine("Produto já está marcado como vendido");
                 TempData["Erro"] = "Produto já foi vendido.";
-                return RedirectToAction("Buscar");
+                return RedirectToAction("Index");
             }
 
             try
@@ -203,29 +216,8 @@ namespace Glowee.Controllers
                 TempData["Erro"] = "Erro ao registrar venda. Tente novamente.";
             }
 
-            return RedirectToAction("Buscar");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Buscar(string termo, string categoria, decimal? precoMin, decimal? precoMax)
-        {
-            var produtos = _context.Produtos
-                .Where(p => !p.Vendido)
-                .Include(p => p.Vendedor)
-                .AsQueryable();
-
-            if (!string.IsNullOrEmpty(termo))
-                produtos = produtos.Where(p => p.Nome.Contains(termo) || p.Descricao.Contains(termo));
-
-            if (!string.IsNullOrEmpty(categoria))
-                produtos = produtos.Where(p => p.Categoria == categoria);
-
-            if (precoMin.HasValue)
-                produtos = produtos.Where(p => p.Preco >= precoMin.Value);
-
-            if (precoMax.HasValue)
-                produtos = produtos.Where(p => p.Preco <= precoMax.Value);
-
-            return View(produtos.ToList());
-        }
     }
 }

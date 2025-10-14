@@ -12,8 +12,22 @@ namespace Glowee
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // Configuração híbrida de banco de dados
             builder.Services.AddDbContext<GloweeDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+                if (builder.Environment.IsDevelopment())
+                {
+                    // Desenvolvimento: SQLite local
+                    options.UseSqlite(connectionString);
+                }
+                else
+                {
+                    // Produção: SQL Server Azure
+                    options.UseSqlServer(connectionString);
+                }
+            });
 
             builder.Services.AddSession();
 

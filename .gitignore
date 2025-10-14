@@ -1,3 +1,60 @@
 .tmp_docs/
 .DS_Store
 **/.DS_Store
+
+# .NET Build outputs
+Glowee/obj/
+Glowee/bin/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+*.log
+
+# Visual Studio
+.vs/
+*.sln.docstates
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+!packages/repositories.config
+
+# Entity Framework
+*.edmx.diagram
+*.edmx.sql
+
+# Azure
+*.azurePubxml
+*.pubxml
+*.publishproj
+
+# Temporary files
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

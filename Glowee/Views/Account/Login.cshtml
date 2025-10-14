@@ -1,17 +1,71 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Acessar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+}
 
-<form asp-action="Login" method="post">
-    <input name="email" placeholder="Email" class="form-control" />
-    <input name="senha" placeholder="Senha" type="password" class="form-control" />
-    <button type="submit" class="btn btn-success mt-3">Entrar</button>
-</form>
+<!-- Login Section -->
+<section class="login-section">
+    <div class="container-fluid">
+        <div class="row justify-content-center section-content">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="login-container">
+                    <!-- Logo -->
+                    <div class="login-logo">
+                        <img src="~/images/branding/logo.png" alt="Glowee" class="login-logo-img" />
+                    </div>
 
-@if (ViewBag.Error != null)
-{
-    <div class="alert alert-danger mt-2">@ViewBag.Error</div>
+                    <!-- Título -->
+                    <h1 class="login-title">Acessar</h1>
+
+                    <!-- Formulário de Login -->
+                    <form class="login-form" id="loginForm" asp-action="Login" method="post">
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" id="email" name="email" class="form-control login-input" placeholder="seu@email.com" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senha" class="form-label">Senha</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" name="senha" class="form-control login-input" placeholder="Sua senha" required />
+                                <button type="button" class="password-toggle" id="passwordToggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary login-btn">
+                            Entrar
+                        </button>
+                    </form>
+
+                    <!-- Link para Cadastro -->
+                    <div class="login-footer">
+                        <p class="login-footer-text">
+                            Não tem uma conta?
+                            <a asp-controller="Account" asp-action="Register" class="login-footer-link">Cadastrar-se</a>
+                        </p>
+                    </div>
+
+                    <!-- Mensagem de Erro -->
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="form-error" style="text-align: center; margin-top: var(--space-md);">
+                            @ViewBag.Error
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/mobile-menu.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="~/js/login.js" asp-append-version="true"></script>
 }

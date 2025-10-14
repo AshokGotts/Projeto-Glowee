@@ -1,6 +1,196 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Política de Privacidade";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+@section Styles {
+    <link rel="stylesheet" href="~/css/layout-expanded.css" asp-append-version="true" />
+}
+
+<!-- Privacy Policy Section -->
+<section class="privacy-section">
+    <div class="container-fluid">
+        <div class="row justify-content-center section-content">
+            <div class="col-12 col-lg-10">
+                <h1 class="privacy-title text-center mb-5">Política de Privacidade</h1>
+                
+                <div class="privacy-content">
+                    <p class="privacy-intro">
+                        <strong>Última atualização:</strong> @DateTime.Now.ToString("dd/MM/yyyy")
+                    </p>
+                    
+                    <p class="privacy-intro">
+                        A Glowee ("nós", "nosso" ou "empresa") respeita sua privacidade e está comprometida 
+                        em proteger suas informações pessoais. Esta Política de Privacidade descreve como 
+                        coletamos, usamos, armazenamos e protegemos suas informações quando você utiliza 
+                        nossa plataforma de e-commerce.
+                    </p>
+
+                    <h2 class="privacy-section-title">1. Informações que Coletamos</h2>
+                    
+                    <h3 class="privacy-subsection-title">1.1 Informações Fornecidas por Você</h3>
+                    <ul class="privacy-list">
+                        <li><strong>Dados de Cadastro:</strong> Nome completo, endereço de e-mail, senha, telefone e endereço</li>
+                        <li><strong>Informações de Perfil:</strong> Tipo de usuário (Cliente ou Vendedor), preferências e configurações</li>
+                        <li><strong>Dados de Transação:</strong> Informações de pagamento, histórico de compras e vendas</li>
+                        <li><strong>Comunicações:</strong> Mensagens, avaliações, comentários e suporte ao cliente</li>
+                    </ul>
+
+                    <h3 class="privacy-subsection-title">1.2 Informações Coletadas Automaticamente</h3>
+                    <ul class="privacy-list">
+                        <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador, páginas visitadas e tempo de permanência</li>
+                        <li><strong>Cookies e Tecnologias Similares:</strong> Para melhorar sua experiência e personalizar conteúdo</li>
+                        <li><strong>Dispositivo:</strong> Tipo de dispositivo, sistema operacional e identificadores únicos</li>
+                    </ul>
+
+                    <h2 class="privacy-section-title">2. Como Utilizamos suas Informações</h2>
+                    
+                    <h3 class="privacy-subsection-title">2.1 Finalidades Principais</h3>
+                    <ul class="privacy-list">
+                        <li>Processar e gerenciar suas transações e pedidos</li>
+                        <li>Facilitar a comunicação entre vendedores e clientes</li>
+                        <li>Fornecer suporte ao cliente e resolver problemas</li>
+                        <li>Melhorar nossos serviços e desenvolver novos recursos</li>
+                        <li>Enviar comunicações importantes sobre sua conta</li>
+                    </ul>
+
+                    <h3 class="privacy-subsection-title">2.2 Finalidades Secundárias</h3>
+                    <ul class="privacy-list">
+                        <li>Personalizar sua experiência na plataforma</li>
+                        <li>Enviar ofertas promocionais e novidades (com seu consentimento)</li>
+                        <li>Realizar análises e pesquisas de mercado</li>
+                        <li>Detectar e prevenir fraudes e atividades suspeitas</li>
+                        <li>Cumprir obrigações legais e regulamentares</li>
+                    </ul>
+
+                    <h2 class="privacy-section-title">3. Compartilhamento de Informações</h2>
+                    
+                    <p class="privacy-text">
+                        Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, 
+                        exceto nas seguintes situações:
+                    </p>
+                    
+                    <ul class="privacy-list">
+                        <li><strong>Vendedores:</strong> Informações necessárias para completar transações (nome, endereço de entrega)</li>
+                        <li><strong>Prestadores de Serviços:</strong> Empresas que nos auxiliam na operação da plataforma (pagamentos, logística)</li>
+                        <li><strong>Obrigações Legais:</strong> Quando exigido por lei ou para proteger nossos direitos</li>
+                        <li><strong>Consentimento:</strong> Quando você autorizar explicitamente o compartilhamento</li>
+                    </ul>
+
+                    <h2 class="privacy-section-title">4. Segurança das Informações</h2>
+                    
+                    <p class="privacy-text">
+                        Implementamos medidas de segurança técnicas, administrativas e físicas para proteger 
+                        suas informações contra acesso não autorizado, alteração, divulgação ou destruição:
+                    </p>
+                    
+                    <ul class="privacy-list">
+                        <li>Criptografia SSL/TLS para transmissão de dados</li>
+                        <li>Armazenamento seguro em servidores protegidos</li>
+                        <li>Controles de acesso rigorosos para funcionários</li>
+                        <li>Monitoramento contínuo de atividades suspeitas</li>
+                        <li>Backup regular e planos de recuperação de desastres</li>
+                    </ul>
+
+                    <h2 class="privacy-section-title">5. Seus Direitos</h2>
+                    
+                    <p class="privacy-text">
+                        Você tem os seguintes direitos em relação às suas informações pessoais:
+                    </p>
+                    
+                    <ul class="privacy-list">
+                        <li><strong>Acesso:</strong> Solicitar uma cópia das informações que temos sobre você</li>
+                        <li><strong>Correção:</strong> Atualizar ou corrigir informações incorretas</li>
+                        <li><strong>Exclusão:</strong> Solicitar a remoção de suas informações pessoais</li>
+                        <li><strong>Portabilidade:</strong> Receber seus dados em formato estruturado</li>
+                        <li><strong>Oposição:</strong> Opor-se ao processamento de suas informações</li>
+                        <li><strong>Restrição:</strong> Limitar como processamos suas informações</li>
+                    </ul>
+
+                    <h2 class="privacy-section-title">6. Cookies e Tecnologias de Rastreamento</h2>
+                    
+                    <p class="privacy-text">
+                        Utilizamos cookies e tecnologias similares para:
+                    </p>
+                    
+                    <ul class="privacy-list">
+                        <li>Manter você logado em sua conta</li>
+                        <li>Lembrar suas preferências e configurações</li>
+                        <li>Analisar como você usa nossa plataforma</li>
+                        <li>Personalizar conteúdo e anúncios</li>
+                        <li>Melhorar a funcionalidade do site</li>
+                    </ul>
+                    
+                    <p class="privacy-text">
+                        Você pode controlar cookies através das configurações do seu navegador, 
+                        mas isso pode afetar a funcionalidade da plataforma.
+                    </p>
+
+                    <h2 class="privacy-section-title">7. Retenção de Dados</h2>
+                    
+                    <p class="privacy-text">
+                        Mantemos suas informações pessoais apenas pelo tempo necessário para cumprir 
+                        as finalidades descritas nesta política, incluindo:
+                    </p>
+                    
+                    <ul class="privacy-list">
+                        <li><strong>Contas Ativas:</strong> Enquanto sua conta estiver ativa</li>
+                        <li><strong>Transações:</strong> Conforme exigido por lei (geralmente 5 anos)</li>
+                        <li><strong>Suporte:</strong> Registros de atendimento por 3 anos</li>
+                        <li><strong>Marketing:</strong> Até você retirar o consentimento</li>
+                    </ul>
+
+                    <h2 class="privacy-section-title">8. Menores de Idade</h2>
+                    
+                    <p class="privacy-text">
+                        Nossa plataforma não é destinada a menores de 18 anos. Não coletamos 
+                        intencionalmente informações pessoais de menores. Se descobrirmos que 
+                        coletamos informações de um menor, tomaremos medidas para excluí-las 
+                        imediatamente.
+                    </p>
+
+                    <h2 class="privacy-section-title">9. Transferência Internacional</h2>
+                    
+                    <p class="privacy-text">
+                        Suas informações podem ser transferidas e processadas em países diferentes 
+                        do seu país de residência. Garantimos que tais transferências sejam feitas 
+                        com proteções adequadas e em conformidade com as leis aplicáveis.
+                    </p>
+
+                    <h2 class="privacy-section-title">10. Alterações nesta Política</h2>
+                    
+                    <p class="privacy-text">
+                        Podemos atualizar esta Política de Privacidade periodicamente. Notificaremos 
+                        sobre mudanças significativas através de e-mail ou aviso na plataforma. 
+                        Recomendamos revisar esta política regularmente.
+                    </p>
+
+                    <h2 class="privacy-section-title">11. Contato</h2>
+                    
+                    <p class="privacy-text">
+                        Se você tiver dúvidas sobre esta Política de Privacidade ou sobre como 
+                        tratamos suas informações pessoais, entre em contato conosco:
+                    </p>
+                    
+                    <div class="contact-info">
+                        <p><strong>E-mail:</strong> privacidade@glowee.com</p>
+                        <p><strong>Telefone:</strong> (11) 99999-9999</p>
+                        <p><strong>Endereço:</strong> Rua da Beleza, 123 - São Paulo, SP - CEP: 01234-567</p>
+                    </div>
+
+                    <div class="privacy-footer">
+                        <p class="privacy-footer-text">
+                            Esta Política de Privacidade é regida pelas leis brasileiras e está 
+                            em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/mobile-menu.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+}

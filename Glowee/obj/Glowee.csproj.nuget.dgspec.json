@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Glowee.csproj": {}
+    "/Users/joacgomes/Documents/Mackenzie/Prática Profissional em Análise e Desenvolvimento de Sistemas/Projeto-Glowee/Glowee/Glowee.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Glowee.csproj": {
+    "/Users/joacgomes/Documents/Mackenzie/Prática Profissional em Análise e Desenvolvimento de Sistemas/Projeto-Glowee/Glowee/Glowee.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Glowee.csproj",
+        "projectUniqueName": "/Users/joacgomes/Documents/Mackenzie/Prática Profissional em Análise e Desenvolvimento de Sistemas/Projeto-Glowee/Glowee/Glowee.csproj",
         "projectName": "Glowee",
-        "projectPath": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\Glowee.csproj",
-        "packagesPath": "C:\\Users\\lfran\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lfran\\OneDrive\\Desktop\\Projeto\\Glowee\\Glowee\\obj\\",
+        "projectPath": "/Users/joacgomes/Documents/Mackenzie/Prática Profissional em Análise e Desenvolvimento de Sistemas/Projeto-Glowee/Glowee/Glowee.csproj",
+        "packagesPath": "/Users/joacgomes/.nuget/packages/",
+        "outputPath": "/Users/joacgomes/Documents/Mackenzie/Prática Profissional em Análise e Desenvolvimento de Sistemas/Projeto-Glowee/Glowee/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\lfran\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/joacgomes/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +37,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -65,6 +58,10 @@
               "version": "[9.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.9, )"
             },
@@ -94,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.414/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,447 @@
+/* 🎨 Layout Expandido - Glowee */
+
+/* Container customizado para largura total */
+.container-fluid {
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0;
+}
+
+/* Adicionar padding interno apenas onde necessário */
+.section-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+  .section-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Ajustes para tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Melhorar espaçamento dos cards de produtos */
+.products-grid {
+  gap: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .products-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* Expandir tabelas para usar mais espaço */
+.vendors-table-container,
+.sales-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Melhorar layout dos filtros */
+.products-filters,
+.sales-filters {
+  max-width: none;
+}
+
+/* Ajustar formulários para usar mais espaço */
+.login-container,
+.register-container,
+.add-product-container {
+  max-width: 600px;
+}
+
+@media (min-width: 1200px) {
+  .login-container,
+  .register-container,
+  .add-product-container {
+    max-width: 700px;
+  }
+}
+
+/* Hero section mais expansiva */
+.hero-section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 1200px) {
+  .hero-section {
+    padding: 6rem 0;
+  }
+}
+
+/* Melhorar espaçamento geral */
+.section-padding {
+  padding: 3rem 0;
+}
+
+@media (min-width: 1200px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
+/* 🎨 Estilos para Menu Mobile Personalizado */
+
+/* Divider para separar seções no menu mobile */
+.mobile-menu-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0.75rem 0;
+  border: none;
+}
+
+/* Container para informações do usuário no menu mobile */
+.mobile-menu-user-info {
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+}
+
+/* Nome do usuário no menu mobile */
+.mobile-menu-user-name {
+  color: #007bff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 123, 255, 0.1);
+  border-radius: 0.375rem;
+  margin: 0.25rem 0;
+}
+
+/* Hover effect para o nome do usuário */
+.mobile-menu-user-name:hover {
+  background-color: rgba(0, 123, 255, 0.15);
+  transition: background-color 0.2s ease;
+}
+
+/* Estilo para botão de logout no menu mobile */
+.mobile-menu-link[href*="Logout"] {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.mobile-menu-link[href*="Logout"]:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+/* Melhorar espaçamento dos ícones no menu mobile */
+.mobile-menu-link i {
+  width: 1.25rem;
+  text-align: center;
+}
+
+/* 🎨 Estilos para Página de Política de Privacidade */
+
+/* Seção principal de privacidade */
+.privacy-section {
+  padding: 3rem 0 !important;
+  background-color: #f8f9fa !important;
+  min-height: 100vh !important;
+}
+
+/* Título principal */
+.privacy-title {
+  color: #2c3e50 !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+  font-family: inherit !important;
+}
+
+/* Container do conteúdo */
+.privacy-content {
+  background: white !important;
+  padding: 3rem !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  line-height: 1.8 !important;
+}
+
+/* Texto introdutório */
+.privacy-intro {
+  font-size: 1.1rem !important;
+  color: #555 !important;
+  margin-bottom: 2rem !important;
+  padding: 1rem !important;
+  background-color: #f8f9fa !important;
+  border-left: 4px solid #007bff !important;
+  border-radius: 0.5rem !important;
+  font-family: inherit !important;
+}
+
+/* Títulos das seções */
+.privacy-section-title {
+  color: #2c3e50 !important;
+  font-size: 1.8rem !important;
+  font-weight: 600 !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid #007bff !important;
+  font-family: inherit !important;
+}
+
+/* Subtítulos */
+.privacy-subsection-title {
+  color: #34495e !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  font-family: inherit !important;
+}
+
+/* Texto padrão */
+.privacy-text {
+  color: #555 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: justify !important;
+  font-family: inherit !important;
+}
+
+/* Listas */
+.privacy-list {
+  margin-bottom: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.privacy-list li {
+  margin-bottom: 0.8rem !important;
+  color: #555 !important;
+  line-height: 1.6 !important;
+  font-family: inherit !important;
+}
+
+.privacy-list strong {
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+}
+
+/* Informações de contato */
+.contact-info {
+  background-color: #f8f9fa !important;
+  padding: 1.5rem !important;
+  border-radius: 0.5rem !important;
+  margin: 2rem 0 !important;
+  border-left: 4px solid #28a745 !important;
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem !important;
+  color: #555 !important;
+  font-family: inherit !important;
+}
+
+.contact-info strong {
+  color: #2c3e50 !important;
+  font-family: inherit !important;
+}
+
+/* Rodapé da política */
+.privacy-footer {
+  margin-top: 3rem !important;
+  padding-top: 2rem !important;
+  border-top: 2px solid #e9ecef !important;
+  text-align: center !important;
+}
+
+.privacy-footer-text {
+  color: #6c757d !important;
+  font-style: italic !important;
+  font-size: 0.95rem !important;
+  font-family: inherit !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .privacy-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .privacy-title {
+    font-size: 2rem;
+  }
+
+  .privacy-section-title {
+    font-size: 1.5rem;
+  }
+
+  .privacy-subsection-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .privacy-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .privacy-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* 🎨 Estilos para Página Sobre Nós - Sobrescrevendo about.css */
+
+/* Seção principal sobre nós */
+.about-section {
+  padding: 3rem 0 !important;
+  background-color: #f8f9fa !important;
+  min-height: 100vh !important;
+  background: #f8f9fa !important; /* Sobrescreve o gradiente */
+}
+
+/* Container do conteúdo */
+.about-content {
+  background: white !important;
+  padding: 3rem !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  line-height: 1.8 !important;
+  margin: 0 !important;
+}
+
+/* Títulos - Sobrescrevendo about.css */
+.about-section h1 {
+  color: #2c3e50 !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+  font-family: inherit !important; /* Remove font-family específica */
+}
+
+.about-section h2 {
+  color: #2c3e50 !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.5rem !important;
+  font-family: inherit !important;
+}
+
+.about-section h3 {
+  color: #34495e !important;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 1rem !important;
+  font-family: inherit !important;
+}
+
+/* Texto principal - Sobrescrevendo about.css */
+.about-section .lead {
+  font-size: 1.2rem !important;
+  color: #555 !important;
+  margin-bottom: 2rem !important;
+  font-family: inherit !important;
+}
+
+.about-section p {
+  color: #555 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: justify !important;
+  font-family: inherit !important;
+}
+
+/* Cards de valores - Sobrescrevendo about.css */
+.about-section .card {
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  background: white !important;
+  border-radius: 0.5rem !important;
+}
+
+.about-section .card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.about-section .card-body {
+  padding: 2rem !important;
+}
+
+.about-section .card-title {
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+  font-family: inherit !important;
+}
+
+.about-section .card-text {
+  color: #555 !important;
+  text-align: center !important;
+  font-family: inherit !important;
+}
+
+/* Estatísticas - Sobrescrevendo about.css */
+.about-section .text-primary {
+  color: #007bff !important;
+  font-weight: 700 !important;
+  font-size: 2rem !important;
+  font-family: inherit !important;
+}
+
+/* Botões - Sobrescrevendo about.css */
+.about-section .btn {
+  border-radius: 0.5rem !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+}
+
+.about-section .btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .about-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-section h1 {
+    font-size: 2rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-section .lead {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .about-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-section .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}

@@ -20,7 +20,6 @@ namespace Glowee.Controllers
 
         // POST /Account/Register
         [HttpPost]
-        [HttpPost]
         public IActionResult Register(User user)
         {
             Console.WriteLine("Entrou no método Register");
@@ -50,7 +49,26 @@ namespace Glowee.Controllers
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 Console.WriteLine("Usuário salvo com sucesso!");
-                return RedirectToAction("Login");
+
+                // 🔐 Login automático após cadastro
+                HttpContext.Session.SetInt32("UsuarioId", user.UsuarioId);
+                HttpContext.Session.SetString("Role", user.Role);
+                HttpContext.Session.SetString("Nome", user.Nome);
+
+                // 🔄 Redirecionamento personalizado baseado no tipo de usuário
+                if (user.Role == "Vendedor")
+                {
+                    return RedirectToAction("MinhasVendas", "Venda");
+                }
+                else if (user.Role == "Cliente")
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    // Fallback para Home caso o role não seja reconhecido
+                    return RedirectToAction("Index", "Home");
+                }
             }
             catch (Exception ex)
             {
@@ -73,8 +91,22 @@ namespace Glowee.Controllers
                 // ✅ Salva o ID como inteiro, não como string
                 HttpContext.Session.SetInt32("UsuarioId", user.UsuarioId);
                 HttpContext.Session.SetString("Role", user.Role);
+                HttpContext.Session.SetString("Nome", user.Nome);
 
-                return RedirectToAction("Index", "Home");
+                // 🔄 Redirecionamento personalizado baseado no tipo de usuário
+                if (user.Role == "Vendedor")
+                {
+                    return RedirectToAction("MinhasVendas", "Venda");
+                }
+                else if (user.Role == "Cliente")
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    // Fallback para Home caso o role não seja reconhecido
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             ViewBag.Error = "Credenciais inválidas";
