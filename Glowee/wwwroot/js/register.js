@@ -268,7 +268,7 @@ class RegisterController {
       return false;
     }
 
-    if (userType !== "cliente" && userType !== "vendedor") {
+    if (userType !== "Cliente" && userType !== "Vendedor") {
       this.showFieldError(
         this.userTypeSelect,
         "Selecione um tipo de usuário válido"
