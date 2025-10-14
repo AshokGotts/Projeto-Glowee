@@ -1,0 +1,92 @@
+/* 🎨 Layout Expandido - Glowee */
+
+/* Container customizado para largura total */
+.container-fluid {
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0;
+}
+
+/* Adicionar padding interno apenas onde necessário */
+.section-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+  .section-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Ajustes para tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Melhorar espaçamento dos cards de produtos */
+.products-grid {
+  gap: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .products-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* Expandir tabelas para usar mais espaço */
+.vendors-table-container,
+.sales-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Melhorar layout dos filtros */
+.products-filters,
+.sales-filters {
+  max-width: none;
+}
+
+/* Ajustar formulários para usar mais espaço */
+.login-container,
+.register-container,
+.add-product-container {
+  max-width: 600px;
+}
+
+@media (min-width: 1200px) {
+  .login-container,
+  .register-container,
+  .add-product-container {
+    max-width: 700px;
+  }
+}
+
+/* Hero section mais expansiva */
+.hero-section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 1200px) {
+  .hero-section {
+    padding: 6rem 0;
+  }
+}
+
+/* Melhorar espaçamento geral */
+.section-padding {
+  padding: 3rem 0;
+}
+
+@media (min-width: 1200px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}

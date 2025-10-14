@@ -6,91 +6,145 @@
     <title>@ViewData["Title"] - Glowee</title>
     <link rel="icon" type="image/x-icon" href="~/images/branding/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/design-system.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Glowee.styles.css" asp-append-version="true" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Layout Expandido -->
+    <link rel="stylesheet" href="~/css/layout-expanded.css" asp-append-version="true" />
+    
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/branding/logo.png" alt="Glowee" height="30" class="me-2" />
-                    Glowee
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav">
-                        @{
-                            var role = Context.Session.GetString("Role");
-                            var nome = Context.Session.GetString("Nome");
-                        }
-
-                        @if (string.IsNullOrEmpty(role))
+    @{
+        var role = Context.Session.GetString("Role");
+        var nome = Context.Session.GetString("Nome");
+    }
+    
+    <!-- Header -->
+    <header class="header-nav">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center py-3 section-content">
+                <div class="d-flex align-items-center">
+                    <img src="~/images/branding/favicon.ico" alt="Glowee" class="header-favicon me-2" />
+                    <div class="navbar-links ms-3 d-none d-md-flex">
+                        <a asp-controller="Home" asp-action="Index" class="navbar-link">
+                            <i class="fas fa-home me-2"></i>Tela Inicial
+                        </a>
+                        <a asp-controller="Produto" asp-action="Index" class="navbar-link">
+                            <i class="fas fa-box me-2"></i>Ver Produtos
+                        </a>
+                        @if (!string.IsNullOrEmpty(role) && role == "Vendedor")
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Cadastro</a>
-                            </li>
+                            <a asp-controller="Venda" asp-action="MinhasVendas" class="navbar-link">
+                                <i class="fas fa-chart-line me-2"></i>Vendas
+                            </a>
+                            <a asp-controller="Vendedor" asp-action="Index" class="navbar-link">
+                                <i class="fas fa-users me-2"></i>Gerenciar Vendedores
+                            </a>
                         }
-                        else
-                        {
-                            <li class="nav-item">
-                                <span class="nav-link text-dark">Olá, @nome!</span>
-                            </li>
+                    </div>
+                </div>
 
-                            @if (role == "Vendedor")
+
+                <!-- Desktop: Botões Login e Cadastro -->
+                <div class="desktop-auth-buttons d-none d-md-flex align-items-center gap-3">
+                    @if (string.IsNullOrEmpty(role))
+                    {
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary">Login</a>
+                        <a asp-controller="Account" asp-action="Register" class="btn btn-primary">Cadastro</a>
+                    }
+                    else
+                    {
+                        <span class="navbar-link">Olá, @nome!</span>
+                        @if (role == "Vendedor")
+                        {
+                            <a asp-controller="Produto" asp-action="Create" class="btn btn-outline-secondary">
+                                <i class="fas fa-plus me-1"></i>Cadastrar Produto
+                            </a>
+                        }
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-primary">Sair</a>
+                    }
+                </div>
+
+                <!-- Mobile: Menu Hambúrguer -->
+                <div class="mobile-menu d-md-none">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+
+                    <!-- Menu Dropdown Mobile -->
+                    <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
+                        <div class="mobile-menu-content">
+                            <a asp-controller="Home" asp-action="Index" class="mobile-menu-link">Tela Inicial</a>
+                            <a asp-controller="Produto" asp-action="Index" class="mobile-menu-link">Produtos</a>
+                            @if (!string.IsNullOrEmpty(role) && role == "Vendedor")
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Produto" asp-action="Create">Cadastrar Produto</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Venda" asp-action="MinhasVendas">Minhas Vendas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-primary fw-bold" asp-controller="Vendedor" asp-action="Index">👥 Gerenciar Vendedores</a>
-                                </li>
+                                <a asp-controller="Venda" asp-action="MinhasVendas" class="mobile-menu-link">Vendas</a>
+                                <a asp-controller="Vendedor" asp-action="Index" class="mobile-menu-link">Gerenciar Vendedores</a>
                             }
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Sair</a>
-                            </li>
-                        }
-                    </ul>
+                            @if (string.IsNullOrEmpty(role))
+                            {
+                                <a asp-controller="Account" asp-action="Login" class="mobile-menu-link">Login</a>
+                                <a asp-controller="Account" asp-action="Register" class="mobile-menu-link">Cadastro</a>
+                            }
+                            else
+                            {
+                                @if (role == "Vendedor")
+                                {
+                                    <a asp-controller="Produto" asp-action="Create" class="mobile-menu-link">Cadastrar Produto</a>
+                                }
+                                <a asp-controller="Account" asp-action="Logout" class="mobile-menu-link">Sair</a>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Glowee - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container-fluid">
+            <div class="footer-content section-content">
+                <div class="footer-links">
+                    <a asp-controller="Home" asp-action="Privacy" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+
+                <div class="footer-copyright">
+                    <p>&copy; 2025 - Glowee</p>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

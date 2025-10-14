@@ -175,21 +175,21 @@ namespace Glowee.Controllers
             {
                 Console.WriteLine("Produto não encontrado");
                 TempData["Erro"] = "Produto não encontrado.";
-                return RedirectToAction("Buscar");
+                return RedirectToAction("Index");
             }
 
             if (produto.VendedorId != vendedorId.Value)
             {
                 Console.WriteLine("Produto pertence a outro vendedor");
                 TempData["Erro"] = "PRODUTO PERTENCE A OUTRO VENDEDOR";
-                return RedirectToAction("Buscar");
+                return RedirectToAction("Index");
             }
 
             if (produto.Vendido)
             {
                 Console.WriteLine("Produto já está marcado como vendido");
                 TempData["Erro"] = "Produto já foi vendido.";
-                return RedirectToAction("Buscar");
+                return RedirectToAction("Index");
             }
 
             try
@@ -216,29 +216,8 @@ namespace Glowee.Controllers
                 TempData["Erro"] = "Erro ao registrar venda. Tente novamente.";
             }
 
-            return RedirectToAction("Buscar");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Buscar(string termo, string categoria, decimal? precoMin, decimal? precoMax)
-        {
-            var produtos = _context.Produtos
-                .Where(p => !p.Vendido)
-                .Include(p => p.Vendedor)
-                .AsQueryable();
-
-            if (!string.IsNullOrEmpty(termo))
-                produtos = produtos.Where(p => p.Nome.Contains(termo) || p.Descricao.Contains(termo));
-
-            if (!string.IsNullOrEmpty(categoria))
-                produtos = produtos.Where(p => p.Categoria == categoria);
-
-            if (precoMin.HasValue)
-                produtos = produtos.Where(p => p.Preco >= precoMin.Value);
-
-            if (precoMax.HasValue)
-                produtos = produtos.Where(p => p.Preco <= precoMax.Value);
-
-            return View(produtos.ToList());
-        }
     }
 }
