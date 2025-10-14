@@ -622,11 +622,11 @@ body.menu-open {
 
   .search-input {
     font-size: 0.9rem;
-    padding: 8px 12px 8px 40px; /* Aumenta o padding esquerdo para dar espaço ao ícone */
+    padding: 8px 12px 8px 40px;
   }
 
   .navbar-links {
-    display: none; /* Oculta os links da navbar no mobile para economizar espaço */
+    display: none;
   }
 
   .filter-select,

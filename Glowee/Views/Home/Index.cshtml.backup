@@ -1,9 +1,0 @@
-@{
-    ViewData["Title"] = "Página Inicial";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h1>Bem-vindo à Glowee 🌸</h1>
-<p>Explore nossos cosméticos incríveis e encontre o que combina com você.</p>
-
-<a class="btn btn-primary" asp-controller="Produto" asp-action="Index">Ver Produtos</a>

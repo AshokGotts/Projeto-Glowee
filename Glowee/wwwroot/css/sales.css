@@ -539,7 +539,7 @@ body.menu-open {
   }
 
   .navbar-links {
-    display: none; /* Oculta os links da navbar no mobile para economizar espaço */
+    display: none;
   }
 
   .filter-select {

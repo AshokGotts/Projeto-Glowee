@@ -8,21 +8,17 @@
     <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
 }
 
-<!-- Register Section -->
+<!-- Registration Section -->
 <section class="register-section">
     <div class="container-fluid">
         <div class="row justify-content-center section-content">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="register-container">
-                    <!-- Logo -->
                     <div class="register-logo">
                         <img src="~/images/branding/logo.png" alt="Glowee" class="register-logo-img" />
                     </div>
 
-                    <!-- Título -->
                     <h1 class="register-title">Cadastrar</h1>
-
-                    <!-- Formulário de Cadastro -->
                     <form class="register-form" id="registerForm" asp-action="Register" method="post" novalidate>
                         <div class="form-group">
                             <label for="fullName" class="form-label">Nome Completo</label>
@@ -72,15 +68,12 @@
                         </button>
                     </form>
 
-                    <!-- Link para Login -->
                     <div class="register-footer">
                         <p class="register-footer-text">
                             Já tem uma conta?
                             <a asp-controller="Account" asp-action="Login" class="register-footer-link">Fazer Login</a>
                         </p>
                     </div>
-
-                    <!-- Mensagens de Erro do ModelState -->
                     @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
                     {
                         <div class="form-error" style="text-align: center; margin-top: var(--space-md);">

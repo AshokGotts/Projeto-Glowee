@@ -519,7 +519,7 @@ body.menu-open {
 /* Responsive Design - Mobile First */
 @media (max-width: 767px) {
   .navbar-links {
-    display: none; /* Oculta os links da navbar no mobile para economizar espaço */
+    display: none;
   }
 
   /* Mobile Menu Responsive */

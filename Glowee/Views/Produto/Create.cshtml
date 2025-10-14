@@ -8,19 +8,16 @@
     <link rel="stylesheet" href="~/css/add-product.css" asp-append-version="true" />
 }
 
-<!-- Add Product Section -->
+<!-- Product Registration Section -->
 <section class="add-product-section">
     <div class="container-fluid">
         <div class="row justify-content-center section-content">
             <div class="col-12 col-md-8 col-lg-6">
-                <!-- Back Button -->
                 <div class="back-button-container mb-4">
                     <a asp-controller="Produto" asp-action="Index" class="back-button">
                         <i class="fas fa-arrow-left me-2"></i>Voltar
                     </a>
                 </div>
-
-                <!-- Add Product Form -->
                 <div class="add-product-container">
                     <div class="add-product-header">
                         <img src="~/images/branding/logo.png" alt="Glowee" class="add-product-logo mb-4" />
@@ -28,21 +25,18 @@
                     </div>
 
                     <form id="addProductForm" class="add-product-form" asp-action="Create" method="post" enctype="multipart/form-data">
-                        <!-- Nome do Produto -->
                         <div class="form-group mb-4">
                             <label for="productName" class="form-label">Nome do Produto</label>
                             <input type="text" id="productName" name="Nome" asp-for="Nome" class="form-control" placeholder="Digite o nome do produto" required />
                             <span asp-validation-for="Nome" class="text-danger"></span>
                         </div>
 
-                        <!-- Descrição -->
                         <div class="form-group mb-4">
                             <label for="productDescription" class="form-label">Descrição</label>
                             <textarea id="productDescription" name="Descricao" asp-for="Descricao" class="form-control" rows="4" placeholder="Descreva o produto" required></textarea>
                             <span asp-validation-for="Descricao" class="text-danger"></span>
                         </div>
 
-                        <!-- Categoria -->
                         <div class="form-group mb-4">
                             <label for="productCategory" class="form-label">Categoria</label>
                             <select id="productCategory" name="Categoria" asp-for="Categoria" class="form-select" required>
@@ -53,7 +47,6 @@
                             <span asp-validation-for="Categoria" class="text-danger"></span>
                         </div>
 
-                        <!-- Preço -->
                         <div class="form-group mb-4">
                             <label for="productPrice" class="form-label">Preço</label>
                             <div class="input-group">
@@ -63,7 +56,6 @@
                             <span asp-validation-for="Preco" class="text-danger"></span>
                         </div>
 
-                        <!-- Imagem do Produto -->
                         <div class="form-group mb-4">
                             <label for="productImage" class="form-label">Imagem do Produto</label>
                             <input type="file" id="productImage" name="Imagem" class="form-control" accept="image/*" required />
@@ -71,8 +63,6 @@
                                 Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 5MB
                             </div>
                         </div>
-
-                        <!-- Botões -->
                         <div class="form-actions">
                             <button type="button" id="clearButton" class="btn btn-outline-secondary">
                                 <i class="fas fa-eraser me-2"></i>Limpar
