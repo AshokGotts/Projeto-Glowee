@@ -1,11 +1,12 @@
 .tmp_docs/
 .DS_Store
 **/.DS_Store
+Glowee/GloweeLocal.*
+Glowee/wwwroot/uploads/*
 
 # .NET Build outputs
 Glowee/obj/*
 Glowee/bin/*
-Glowee/GloweeLocal.*
 bin/*
 obj/*
 *.user
