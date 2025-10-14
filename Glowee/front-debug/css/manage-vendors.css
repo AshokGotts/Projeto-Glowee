@@ -594,105 +594,18 @@ body.menu-open {
     font-size: 0.8rem;
   }
 
-  /* Table Responsive - Mobile */
-  .vendors-table-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-  }
-
-  .vendors-table-container::after {
-    content: "← Deslize para ver mais →";
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    background: rgba(31, 122, 140, 0.8);
-    color: white;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.6rem;
-    font-family: var(--font-primary);
-    z-index: 10;
-    pointer-events: none;
-  }
-
+  /* SEMPRE usar cards no mobile, independente da orientação */
   .vendors-table {
-    min-width: 600px; /* Largura mínima para evitar compressão excessiva */
-  }
-
-  .vendors-table thead th {
-    padding: var(--space-sm) var(--space-xs);
-    font-size: 0.75rem;
-    white-space: nowrap;
-  }
-
-  .vendors-table tbody td {
-    padding: var(--space-sm) var(--space-xs);
-    font-size: 0.8rem;
-    white-space: nowrap;
-  }
-
-  .vendor-info {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-xs);
-    min-width: 120px;
-  }
-
-  .vendor-avatar {
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .vendor-name {
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-
-  .vendor-email {
-    font-size: 0.75rem;
-    min-width: 100px;
-  }
-
-  .vendor-sales {
-    min-width: 80px;
-  }
-
-  .sales-count {
-    font-size: 0.7rem;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .sales-total {
-    font-size: 0.8rem;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .vendor-actions {
-    min-width: 70px;
-  }
-
-  .delete-vendor {
-    font-size: 0.7rem;
-    padding: var(--space-xs);
-    margin: 0 auto;
-    white-space: nowrap;
-    min-width: 60px;
-  }
-
-  .delete-vendor i {
-    display: none; /* Oculta o ícone no mobile para economizar espaço */
-  }
-
-  /* Alternativa em cards para mobile */
-  .vendors-table {
-    display: none; /* Oculta a tabela no mobile */
+    display: none !important; /* Força ocultação da tabela no mobile */
   }
 
   .vendors-cards {
-    display: block; /* Mostra os cards no mobile */
+    display: block !important; /* Força exibição dos cards no mobile */
+  }
+
+  /* Remove o container da tabela no mobile */
+  .vendors-table-container {
+    display: none;
   }
 
   .vendor-card {
@@ -773,6 +686,33 @@ body.menu-open {
     display: inline; /* Mostra o ícone nos cards */
   }
 
+  /* Melhorias para orientação vertical no mobile */
+  .vendor-card {
+    margin-bottom: var(--space-lg);
+    padding: var(--space-lg);
+  }
+
+  .vendor-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .vendor-card-header .delete-vendor {
+    align-self: flex-end;
+    margin-top: var(--space-sm);
+  }
+
+  .vendor-card-sales {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .vendor-card-sales-info {
+    width: 100%;
+  }
+
   .footer-link {
     display: block;
     margin: var(--space-sm) 0;
@@ -781,6 +721,45 @@ body.menu-open {
   .social-link {
     margin: 0 var(--space-sm);
     font-size: 1.25rem;
+  }
+}
+
+/* Media query específica para orientação landscape no mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .manage-vendors-section {
+    padding: var(--space-lg) 0;
+  }
+
+  .manage-vendors-title {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .vendors-filters {
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .vendor-card {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .vendor-card-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .vendor-card-header .delete-vendor {
+    margin-top: 0;
+    align-self: center;
+  }
+
+  .vendor-card-sales {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="shortcut icon"
+      href="../images/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glowee - Sobre Nós</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/about.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-nav">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-3">
+          <div class="d-flex align-items-center">
+            <a
+              href="home.html"
+              class="d-flex align-items-center text-decoration-none"
+            >
+              <img
+                src="../images/favicon.ico"
+                alt="Glowee"
+                class="header-favicon me-2"
+              />
+            </a>
+            <div class="navbar-links ms-3">
+              <a href="home.html" class="navbar-link">
+                <i class="fas fa-home me-2"></i>Início
+              </a>
+              <a href="products.html" class="navbar-link">
+                <i class="fas fa-box me-2"></i>Ver Produtos
+              </a>
+              <a href="sales.html" class="navbar-link">
+                <i class="fas fa-chart-line me-2"></i>Vendas
+              </a>
+              <a href="manage-vendors.html" class="navbar-link">
+                <i class="fas fa-users me-2"></i>Gerenciar Vendedores
+              </a>
+            </div>
+          </div>
+
+          <!-- Desktop: Botões Login e Cadastro -->
+          <div
+            class="desktop-auth-buttons d-none d-md-flex align-items-center gap-3"
+          >
+            <a href="login.html" class="btn btn-outline-primary">Login</a>
+            <a href="register.html" class="btn btn-primary">Cadastro</a>
+          </div>
+
+          <!-- Mobile: Menu Hambúrguer -->
+          <div class="mobile-menu d-md-none">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+              <i class="fas fa-bars fa-lg"></i>
+            </button>
+
+            <!-- Menu Dropdown Mobile -->
+            <div class="mobile-menu-dropdown" id="mobileMenuDropdown">
+              <div class="mobile-menu-content">
+                <a href="home.html" class="mobile-menu-link">Início</a>
+                <a href="products.html" class="mobile-menu-link"
+                  >Ver Produtos</a
+                >
+                <a href="sales.html" class="mobile-menu-link">Vendas</a>
+                <a href="manage-vendors.html" class="mobile-menu-link"
+                  >Gerenciar Vendedores</a
+                >
+                <a href="login.html" class="mobile-menu-link">Login</a>
+                <a href="register.html" class="mobile-menu-link">Cadastro</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10">
+            <!-- Hero Section -->
+            <div class="about-hero">
+              <div class="about-logo">
+                <img
+                  src="../images/branding/logo.png"
+                  alt="Glowee"
+                  class="about-logo-img"
+                />
+              </div>
+              <h1 class="about-title">Sobre Nós</h1>
+              <p class="about-subtitle">
+                Conheça a história por trás da Glowee e os desenvolvedores que
+                tornaram este projeto possível
+              </p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="about-content">
+              <div class="about-text">
+                <p class="about-paragraph">
+                  Somos quatro estudantes apaixonados por tecnologia e inovação,
+                  que decidiram unir conhecimentos de Análise e Desenvolvimento
+                  de Sistemas (ADS) a um grande sonho: criar produtos que
+                  transformem a vida das pessoas.
+                </p>
+
+                <p class="about-paragraph">
+                  Acreditamos que cuidar da pele vai muito além da estética — é
+                  saúde, autoestima e bem-estar. Por isso nasceu a
+                  <strong>Glowee</strong>, uma marca de dermocosméticos
+                  desenvolvida com dedicação, pesquisa e o compromisso de
+                  oferecer fórmulas seguras, eficazes e acessíveis.
+                </p>
+
+                <p class="about-paragraph">
+                  Nossa missão é simples, mas poderosa: ajudar milhões de
+                  pessoas a conquistar uma pele saudável e radiante. Cada
+                  produto da Glowee é pensado para trazer resultados reais, com
+                  a confiança de quem acredita que tecnologia e ciência podem
+                  andar de mãos dadas com o cuidado humano.
+                </p>
+
+                <p class="about-paragraph">
+                  <strong
+                    >Glowee não é apenas uma marca. É o reflexo do nosso
+                    propósito e do nosso futuro:</strong
+                  >
+                  crescer junto com você, iluminando jornadas de autocuidado
+                  todos os dias.
+                </p>
+              </div>
+
+              <!-- Values Section -->
+              <div class="about-values">
+                <h2 class="values-title">Nossos Valores</h2>
+                <div class="row">
+                  <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="value-card">
+                      <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                      </div>
+                      <h3 class="value-title">Paixão</h3>
+                      <p class="value-description">
+                        Apaixonados por tecnologia e inovação, sempre buscando
+                        soluções que transformem vidas.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="value-card">
+                      <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                      </div>
+                      <h3 class="value-title">Conhecimento</h3>
+                      <p class="value-description">
+                        Estudantes de ADS aplicando conhecimentos técnicos para
+                        criar produtos de qualidade.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="value-card">
+                      <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                      </div>
+                      <h3 class="value-title">Segurança</h3>
+                      <p class="value-description">
+                        Compromisso com fórmulas seguras, eficazes e acessíveis
+                        para todos os tipos de pele.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="value-card">
+                      <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                      </div>
+                      <h3 class="value-title">Cuidado Humano</h3>
+                      <p class="value-description">
+                        Tecnologia e ciência caminhando junto com o cuidado
+                        humano e o bem-estar das pessoas.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mission Section -->
+              <div class="about-mission">
+                <div class="mission-content">
+                  <div class="mission-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h2 class="mission-title">Nossa Missão</h2>
+                  <p class="mission-text">
+                    Ajudar milhões de pessoas a conquistar uma pele saudável e
+                    radiante, oferecendo produtos que trazem resultados reais e
+                    transformam vidas através do autocuidado.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Team Section
+              <div class="about-team">
+                <h2 class="team-title">Nossa Equipe</h2>
+                <p class="team-subtitle">
+                  Quatro estudantes unidos por um objetivo comum: criar
+                  tecnologia que faça a diferença
+                </p>
+
+                <div class="team-grid">
+                  <div class="team-member">
+                    <div class="member-avatar">
+                      <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="member-name">Desenvolvedor 1</h3>
+                    <p class="member-role">
+                      Análise e Desenvolvimento de Sistemas
+                    </p>
+                    <p class="member-description">
+                      Especialista em desenvolvimento frontend e experiência do
+                      usuário.
+                    </p>
+                  </div>
+
+                  <div class="team-member">
+                    <div class="member-avatar">
+                      <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="member-name">Desenvolvedor 2</h3>
+                    <p class="member-role">
+                      Análise e Desenvolvimento de Sistemas
+                    </p>
+                    <p class="member-description">
+                      Focado em backend e arquitetura de sistemas robustos.
+                    </p>
+                  </div>
+
+                  <div class="team-member">
+                    <div class="member-avatar">
+                      <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="member-name">Desenvolvedor 3</h3>
+                    <p class="member-role">
+                      Análise e Desenvolvimento de Sistemas
+                    </p>
+                    <p class="member-description">
+                      Especialista em banco de dados e integração de sistemas.
+                    </p>
+                  </div>
+
+                  <div class="team-member">
+                    <div class="member-avatar">
+                      <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="member-name">Desenvolvedor 4</h3>
+                    <p class="member-role">
+                      Análise e Desenvolvimento de Sistemas
+                    </p>
+                    <p class="member-description">
+                      Responsável por testes, qualidade e deploy da aplicação.
+                    </p>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="#privacidade" class="footer-link">Privacidade</a>
+            <a href="about.html" class="footer-link">Sobre nós</a>
+            <a href="#contato" class="footer-link">Contato</a>
+          </div>
+
+          <div class="footer-social">
+            <a href="#" class="social-link" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" title="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" title="TikTok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+
+          <div class="footer-copyright">
+            <p>&copy; 2025 - Glowee</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="../js/mobile-menu.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

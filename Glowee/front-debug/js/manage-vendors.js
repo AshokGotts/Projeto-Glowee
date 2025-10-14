@@ -107,6 +107,9 @@ class ManageVendorsController {
    */
   initializeVendors() {
     const vendorRows = document.querySelectorAll(".vendor-row");
+    const vendorCards = document.querySelectorAll(".vendor-card");
+
+    // Inicializa vendedores da tabela
     this.allVendors = Array.from(vendorRows).map((row, index) => {
       const name = row.querySelector(".vendor-name span")?.textContent || "";
       const email = row.querySelector(".vendor-email")?.textContent || "";
@@ -115,6 +118,7 @@ class ManageVendorsController {
 
       return {
         element: row,
+        cardElement: vendorCards[index], // Associa o card correspondente
         name: name.toLowerCase(),
         email: email.toLowerCase(),
         salesCount: salesCount,
@@ -150,22 +154,36 @@ class ManageVendorsController {
    * Atualiza a visibilidade dos vendedores
    */
   updateVendorsVisibility() {
-    // Oculta todos os vendedores
+    // Oculta todos os vendedores (tabela e cards)
     this.allVendors.forEach((vendor) => {
-      vendor.element.style.display = "none";
+      if (vendor.element) {
+        vendor.element.style.display = "none";
+      }
+      if (vendor.cardElement) {
+        vendor.cardElement.style.display = "none";
+      }
     });
 
-    // Mostra apenas os vendedores filtrados
+    // Mostra apenas os vendedores filtrados (tabela e cards)
     this.filteredVendors.forEach((vendor) => {
-      vendor.element.style.display = "";
+      if (vendor.element) {
+        vendor.element.style.display = "";
+      }
+      if (vendor.cardElement) {
+        vendor.cardElement.style.display = "block";
+      }
     });
 
     // Mostra/oculta mensagem de "nenhum resultado"
     if (this.filteredVendors.length === 0) {
-      this.vendorsTable.style.display = "none";
+      if (this.vendorsTable) {
+        this.vendorsTable.style.display = "none";
+      }
       this.noResults.style.display = "block";
     } else {
-      this.vendorsTable.style.display = "table";
+      if (this.vendorsTable) {
+        this.vendorsTable.style.display = "table";
+      }
       this.noResults.style.display = "none";
     }
   }
@@ -265,10 +283,18 @@ class ManageVendorsController {
         vendor.element.querySelector(`[data-vendor-id="${vendorId}"]`) === null
     );
 
-    // Remove o elemento do DOM
+    // Remove o elemento da tabela do DOM
     const vendorRow = document.querySelector(`[data-vendor-id="${vendorId}"]`);
     if (vendorRow) {
       vendorRow.closest("tr").remove();
+    }
+
+    // Remove o card correspondente do DOM
+    const vendorCard = document.querySelector(
+      `.vendor-card .delete-vendor[data-vendor-id="${vendorId}"]`
+    );
+    if (vendorCard) {
+      vendorCard.closest(".vendor-card").remove();
     }
 
     // Atualiza a lista filtrada
