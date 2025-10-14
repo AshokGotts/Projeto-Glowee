@@ -1,12 +1,14 @@
 .tmp_docs/
 .DS_Store
 **/.DS_Store
+Glowee/GloweeLocal.*
+Glowee/wwwroot/uploads/*
 
 # .NET Build outputs
-Glowee/obj/
-Glowee/bin/
-bin/
-obj/
+Glowee/obj/*
+Glowee/bin/*
+bin/*
+obj/*
 *.user
 *.suo
 *.cache
@@ -14,6 +16,12 @@ obj/
 *.exe
 *.pdb
 *.log
+
+# Project files
+*.csproj.user
+*.csproj.Backup.tmp
+*.csproj.DotSettings.user
+*.sln.DotSettings.user
 
 # Visual Studio
 .vs/
@@ -58,3 +66,53 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Database files (SQLite)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Logs and diagnostics
+logs/
+*.log
+*.log.*
+
+# Runtime files
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

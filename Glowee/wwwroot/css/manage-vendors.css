@@ -224,6 +224,10 @@ h6 {
   font-weight: 600;
   color: var(--primary-dark);
   margin-bottom: var(--space-2xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-lg);
 }
 
 /* Vendors Filters */
@@ -234,6 +238,9 @@ h6 {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--light);
   margin-bottom: var(--space-xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Search Container */
@@ -288,6 +295,8 @@ h6 {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--light);
   overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Vendors Table */
@@ -551,7 +560,7 @@ body.menu-open {
 /* Responsive Design - Mobile First */
 @media (max-width: 767px) {
   .navbar-links {
-    display: none; /* Oculta os links da navbar no mobile para economizar espaço */
+    display: none;
   }
 
   /* Mobile Menu Responsive */
@@ -594,16 +603,14 @@ body.menu-open {
     font-size: 0.8rem;
   }
 
-  /* SEMPRE usar cards no mobile, independente da orientação */
+  /* Force cards on mobile regardless of orientation */
   .vendors-table {
-    display: none !important; /* Força ocultação da tabela no mobile */
+    display: none !important;
   }
 
   .vendors-cards {
-    display: block !important; /* Força exibição dos cards no mobile */
+    display: block !important;
   }
-
-  /* Remove o container da tabela no mobile */
   .vendors-table-container {
     display: none;
   }
@@ -683,10 +690,8 @@ body.menu-open {
   }
 
   .vendor-card .delete-vendor i {
-    display: inline; /* Mostra o ícone nos cards */
+    display: inline;
   }
-
-  /* Melhorias para orientação vertical no mobile */
   .vendor-card {
     margin-bottom: var(--space-lg);
     padding: var(--space-lg);
@@ -770,11 +775,11 @@ body.menu-open {
   }
 
   .vendors-table {
-    display: table; /* Mostra a tabela em tablet */
+    display: table;
   }
 
   .vendors-cards {
-    display: none; /* Oculta os cards em tablet */
+    display: none;
   }
 
   .vendors-table thead th {
@@ -795,11 +800,11 @@ body.menu-open {
   }
 
   .vendors-table {
-    display: table; /* Mostra a tabela em desktop */
+    display: table;
   }
 
   .vendors-cards {
-    display: none; /* Oculta os cards em desktop */
+    display: none;
   }
 
   .vendors-table thead th {

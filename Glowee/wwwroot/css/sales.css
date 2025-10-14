@@ -224,6 +224,10 @@ h6 {
   font-weight: 600;
   color: var(--primary-dark);
   margin-bottom: var(--space-2xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-lg);
 }
 
 /* Sales Filters */
@@ -234,6 +238,9 @@ h6 {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--light);
   margin-bottom: var(--space-xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Search Container */
@@ -308,6 +315,8 @@ h6 {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--light);
   overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Sales Table */
@@ -539,7 +548,7 @@ body.menu-open {
   }
 
   .navbar-links {
-    display: none; /* Oculta os links da navbar no mobile para economizar espaço */
+    display: none;
   }
 
   .filter-select {

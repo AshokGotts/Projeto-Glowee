@@ -1,6 +1,6 @@
 /**
  * Add Product Controller - Glowee
- * Gerencia a página de cadastro de produto e suas funcionalidades
+ * Manages product registration page and its functionalities
  */
 
 class AddProductController {
@@ -18,7 +18,7 @@ class AddProductController {
   }
 
   /**
-   * Inicializa o controlador de cadastro de produto
+   * Initializes the product registration controller
    */
   init() {
     if (document.readyState === "loading") {
@@ -29,18 +29,15 @@ class AddProductController {
   }
 
   /**
-   * Configura os elementos DOM necessários
+   * Sets up necessary DOM elements
    */
   setupElements() {
-    // Configura o formulário e seus elementos
     this.setupFormElements();
-
-    // Configura os event listeners
     this.setupEventListeners();
   }
 
   /**
-   * Configura os elementos do formulário
+   * Sets up form elements
    */
   setupFormElements() {
     this.form = document.getElementById("addProductForm");
@@ -54,20 +51,16 @@ class AddProductController {
   }
 
   /**
-   * Configura os event listeners
+   * Sets up event listeners
    */
   setupEventListeners() {
-    // Event listener para o botão limpar
     if (this.clearButton) {
       this.clearButton.addEventListener("click", () => this.clearForm());
     }
 
-    // Event listener para o formulário
     if (this.form) {
       this.form.addEventListener("submit", (e) => this.handleSubmit(e));
     }
-
-    // Event listeners para validação em tempo real
     if (this.productName) {
       this.productName.addEventListener("blur", () =>
         this.validateProductName()
@@ -100,7 +93,7 @@ class AddProductController {
   }
 
   /**
-   * Limpa todos os campos do formulário
+   * Clears all form fields
    */
   clearForm() {
     if (this.productName) this.productName.value = "";
@@ -109,20 +102,17 @@ class AddProductController {
     if (this.productPrice) this.productPrice.value = "";
     if (this.productImage) this.productImage.value = "";
 
-    // Remove mensagens de erro
     this.clearValidationMessages();
 
-    // Foca no primeiro campo
     if (this.productName) {
       this.productName.focus();
     }
 
-    // Mostra feedback visual
     this.showMessage("Formulário limpo com sucesso!", "success");
   }
 
   /**
-   * Remove todas as mensagens de validação
+   * Removes all validation messages
    */
   clearValidationMessages() {
     const errorMessages = document.querySelectorAll(".error-message");
@@ -137,7 +127,7 @@ class AddProductController {
   }
 
   /**
-   * Valida o nome do produto
+   * Validates product name
    */
   validateProductName() {
     const value = this.productName.value.trim();
@@ -152,7 +142,7 @@ class AddProductController {
   }
 
   /**
-   * Valida a descrição do produto
+   * Validates product description
    */
   validateProductDescription() {
     const value = this.productDescription.value.trim();
@@ -167,7 +157,7 @@ class AddProductController {
   }
 
   /**
-   * Valida a categoria do produto
+   * Validates product category
    */
   validateProductCategory() {
     const value = this.productCategory.value;
@@ -182,7 +172,7 @@ class AddProductController {
   }
 
   /**
-   * Valida o preço do produto
+   * Validates product price
    */
   validateProductPrice() {
     const value = parseFloat(this.productPrice.value);
@@ -197,7 +187,7 @@ class AddProductController {
   }
 
   /**
-   * Valida a imagem do produto
+   * Validates product image
    */
   validateProductImage() {
     const file = this.productImage.files[0];
@@ -206,7 +196,7 @@ class AddProductController {
 
     if (file) {
       const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
-      const maxSize = 5 * 1024 * 1024; // 5MB
+      const maxSize = 5 * 1024 * 1024;
 
       if (!validTypes.includes(file.type)) {
         errorMessage = "Formato inválido. Use JPG, PNG ou GIF";
@@ -224,24 +214,20 @@ class AddProductController {
   }
 
   /**
-   * Define a validação de um campo
+   * Sets field validation
    */
   setFieldValidation(field, isValid, errorMessage) {
-    // Remove mensagens de erro anteriores
     const existingError = field.parentNode.querySelector(".error-message");
     if (existingError) {
       existingError.remove();
     }
 
-    // Remove classes de validação
     field.classList.remove("is-valid", "is-invalid");
 
     if (isValid) {
       field.classList.add("is-valid");
     } else {
       field.classList.add("is-invalid");
-
-      // Adiciona mensagem de erro
       const errorDiv = document.createElement("div");
       errorDiv.className = "error-message";
       errorDiv.style.color = "#dc3545";
@@ -254,7 +240,7 @@ class AddProductController {
   }
 
   /**
-   * Valida todo o formulário
+   * Validates entire form
    */
   validateForm() {
     const isNameValid = this.validateProductName();
@@ -273,7 +259,7 @@ class AddProductController {
   }
 
   /**
-   * Manipula o envio do formulário
+   * Handles form submission
    */
   async handleSubmit(event) {
     if (this.isSubmitting) {
@@ -281,19 +267,17 @@ class AddProductController {
       return;
     }
 
-    // Valida o formulário
     if (!this.validateForm()) {
       event.preventDefault();
       this.showMessage("Por favor, corrija os erros no formulário", "error");
       return;
     }
 
-    // Se a validação passou, permite o envio do formulário
     this.setLoadingState(true);
   }
 
   /**
-   * Define o estado de carregamento
+   * Sets loading state
    */
   setLoadingState(isLoading) {
     if (this.submitButton) {
@@ -316,16 +300,13 @@ class AddProductController {
   }
 
   /**
-   * Mostra uma mensagem para o usuário
+   * Shows message to user
    */
   showMessage(message, type = "info") {
-    // Remove mensagens anteriores
     const existingMessage = document.querySelector(".alert-message");
     if (existingMessage) {
       existingMessage.remove();
     }
-
-    // Cria nova mensagem
     const messageDiv = document.createElement("div");
     messageDiv.className = `alert-message alert alert-${
       type === "error" ? "danger" : type === "success" ? "success" : "info"
@@ -349,7 +330,6 @@ class AddProductController {
 
     document.body.appendChild(messageDiv);
 
-    // Remove a mensagem após 5 segundos
     setTimeout(() => {
       if (messageDiv.parentNode) {
         messageDiv.remove();
@@ -358,7 +338,7 @@ class AddProductController {
   }
 
   /**
-   * Formata o preço para exibição
+   * Formats price for display
    */
   formatPrice(price) {
     return new Intl.NumberFormat("pt-BR", {
@@ -368,7 +348,7 @@ class AddProductController {
   }
 
   /**
-   * Gera um preview da imagem selecionada
+   * Generates preview of selected image
    */
   generateImagePreview(file) {
     return new Promise((resolve) => {
@@ -379,9 +359,9 @@ class AddProductController {
   }
 }
 
-// Inicializa o controlador quando o script é carregado
+// Initialize controller when script is loaded
 const addProductController = new AddProductController();
 
-// Exporta para uso global se necessário
+// Export for global use if needed
 window.AddProductController = AddProductController;
 window.addProductController = addProductController;

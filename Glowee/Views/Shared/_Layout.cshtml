@@ -101,7 +101,7 @@
                     else if (role == "Cliente")
                     {
                         <!-- Cliente logado: Saudação e botão Sair -->
-                        <span class="navbar-link text-primary fw-medium">
+                        <span class="navbar-link fw-medium" style="color: var(--primary-dark);">
                             <i class="fas fa-user me-2"></i>Olá, @nome!
                         </span>
                         <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-primary">
@@ -111,7 +111,7 @@
                     else if (role == "Vendedor")
                     {
                         <!-- Vendedor logado: Saudação, Cadastrar Produto e Sair -->
-                        <span class="navbar-link text-primary fw-medium">
+                        <span class="navbar-link fw-medium" style="color: var(--primary-dark);">
                             <i class="fas fa-user me-2"></i>Olá, @nome!
                         </span>
                         <a asp-controller="Produto" asp-action="Create" class="btn btn-outline-secondary">
@@ -143,7 +143,7 @@
                                 <a asp-controller="Home" asp-action="About" class="mobile-menu-link">Sobre nós</a>
                                 <div class="mobile-menu-divider"></div>
                                 <div class="mobile-menu-user-info">
-                                    <span class="mobile-menu-user-name">
+                                    <span class="mobile-menu-user-name" style="color: var(--primary-dark);">
                                         <i class="fas fa-user me-2"></i>Olá, @nome!
                                     </span>
                                 </div>
@@ -164,7 +164,7 @@
                                 <a asp-controller="Home" asp-action="About" class="mobile-menu-link">Sobre nós</a>
                                 <div class="mobile-menu-divider"></div>
                                 <div class="mobile-menu-user-info">
-                                    <span class="mobile-menu-user-name">
+                                    <span class="mobile-menu-user-name" style="color: var(--primary-dark);">
                                         <i class="fas fa-user me-2"></i>Olá, @nome!
                                     </span>
                                 </div>

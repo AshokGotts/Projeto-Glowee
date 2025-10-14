@@ -216,6 +216,9 @@ h6 {
   background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
   min-height: calc(100vh - 200px);
   padding: var(--space-3xl) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Back Button */
@@ -251,6 +254,9 @@ h6 {
   padding: var(--space-2xl);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--light);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .add-product-header {
@@ -299,6 +305,46 @@ h6 {
   background: var(--white);
 }
 
+/* Fix for select dropdown styling */
+.form-select {
+  background-image: none !important;
+  background-color: var(--white) !important;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  padding-right: 40px;
+}
+
+/* Custom select wrapper */
+.form-group {
+  position: relative;
+}
+
+.form-group .form-select {
+  background-image: none !important;
+  background-color: var(--white) !important;
+}
+
+/* Custom dropdown arrow for select */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--primary);
+  z-index: 2;
+  font-size: 0.9rem;
+}
+
 .form-control:focus,
 .form-select:focus {
   outline: none;
@@ -337,6 +383,8 @@ h6 {
 .input-group .form-control {
   border-left: none;
   border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  border-top-right-radius: var(--border-radius-md);
+  border-bottom-right-radius: var(--border-radius-md);
 }
 
 .input-group .form-control:focus {
@@ -519,7 +567,7 @@ body.menu-open {
 /* Responsive Design - Mobile First */
 @media (max-width: 767px) {
   .navbar-links {
-    display: none; /* Oculta os links da navbar no mobile para economizar espaço */
+    display: none;
   }
 
   /* Mobile Menu Responsive */
@@ -540,7 +588,8 @@ body.menu-open {
 
   .add-product-container {
     padding: var(--space-lg);
-    margin: 0 var(--space-sm);
+    margin: var(--space-md);
+    max-width: calc(100% - 2rem);
   }
 
   .add-product-title {
@@ -600,5 +649,7 @@ body.menu-open {
 
   .add-product-container {
     padding: var(--space-2xl);
+    max-width: 600px;
+    width: 100%;
   }
 }
