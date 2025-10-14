@@ -1,0 +1,17 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: glowee-sqlserver
+    environment:
+      - ACCEPT_EULA=1
+      - SA_PASSWORD=Glowee123!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    restart: unless-stopped
+    platform: linux/amd64
+
+volumes:
+  sqlserver_data:

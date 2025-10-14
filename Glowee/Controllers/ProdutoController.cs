@@ -15,11 +15,15 @@ namespace Glowee.Controllers
     {
         private readonly GloweeDbContext _context;
         private readonly IConfiguration _config;
+        private readonly AzureBlobService _azureBlobService;
+        private readonly IWebHostEnvironment _environment;
 
-        public ProdutoController(GloweeDbContext context, IConfiguration config)
+        public ProdutoController(GloweeDbContext context, IConfiguration config, AzureBlobService azureBlobService, IWebHostEnvironment environment)
         {
             _context = context;
             _config = config;
+            _azureBlobService = azureBlobService;
+            _environment = environment;
         }
 
         // Exibe apenas produtos disponíveis
@@ -74,22 +78,31 @@ namespace Glowee.Controllers
                 return View(produto);
             }
 
-            // Upload para Azure Blob Storage
-            var connectionString = _config["AzureStorage:ConnectionString"];
-            var containerName = _config["AzureStorage:ContainerName"];
-
-            var blobContainer = new BlobContainerClient(connectionString, containerName);
-            await blobContainer.CreateIfNotExistsAsync();
-
-            var blobName = Guid.NewGuid().ToString() + Path.GetExtension(Imagem.FileName);
-            var blobClient = blobContainer.GetBlobClient(blobName);
-
-            using (var stream = Imagem.OpenReadStream())
+            // Upload híbrido: local em desenvolvimento, Azure em produção
+            if (_environment.IsDevelopment())
             {
-                await blobClient.UploadAsync(stream, true);
-            }
+                // Desenvolvimento: salvar localmente
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
 
-            produto.ImagemUrl = blobClient.Uri.ToString();
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Imagem.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Imagem.CopyToAsync(stream);
+                }
+
+                produto.ImagemUrl = $"/uploads/{fileName}";
+            }
+            else
+            {
+                // Produção: usar Azure Blob Storage
+                produto.ImagemUrl = await _azureBlobService.UploadAsync(Imagem);
+            }
             produto.VendedorId = vendedorId.Value;
 
             ModelState.Remove(nameof(produto.Vendas));
