@@ -5,7 +5,7 @@
 namespace Glowee.Migrations
 {
     /// <inheritdoc />
-    public partial class FixUserRegistre : Migration
+    public partial class DatabaseMods : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

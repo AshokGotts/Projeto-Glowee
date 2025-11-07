@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Glowee.Models
 {
     public class User
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsuarioId { get; set; }
 
         [Required(ErrorMessage = "O nome é obrigatório.")]
@@ -23,9 +25,10 @@ namespace Glowee.Models
         [Required(ErrorMessage = "O tipo de usuário é obrigatório.")]
         public string Role { get; set; }
 
-        [ValidateNever] // Para não validar a obrigatoriedade, se não o form vai reclamar
+        [ValidateNever]
         public ICollection<Produto> Produtos { get; set; }
-        [ValidateNever] // Para não validar a obrigatoriedade, se não o form vai reclamar
+
+        [ValidateNever]
         public ICollection<Venda> Vendas { get; set; }
     }
 }

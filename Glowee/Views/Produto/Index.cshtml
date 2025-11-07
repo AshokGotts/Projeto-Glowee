@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="~/css/products.css" asp-append-version="true" />
 }
 
-<!-- Products Section -->
 <section class="products-section">
     <div class="container-fluid">
         <div class="row section-content">
@@ -22,7 +21,6 @@
             </div>
         </div>
 
-        <!-- Filtros e Busca -->
         <div class="products-filters mb-4">
             <div class="row align-items-center">
                 <div class="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
@@ -69,8 +67,9 @@
                         <p class="product-category">@produto.Categoria</p>
                         <p class="product-price">R$ @produto.Preco.ToString("F2")</p>
 
-                        <!-- Informações do Vendedor (ocultas se não logado) -->
-                        <div class="vendor-info" id="vendorInfo@(productIndex)" style="display: @(isLoggedIn ? "block" : "none")">
+                        @if (role == "Cliente" || role == "Vendedor")
+                        {
+                        <div class="vendor-info" id="vendorInfo@(productIndex)">
                             <div class="vendor-details">
                                 <p class="vendor-name">
                                     <i class="fas fa-user me-2"></i>@produto.Vendedor?.Nome
@@ -80,38 +79,39 @@
                                 </p>
                             </div>
                         </div>
-
-                        <!-- Ícone de informação para usuários não logados -->
-                        <div class="info-icon" id="infoIcon@(productIndex)" title="Ver detalhes do vendedor" style="display: @(isLoggedIn ? "none" : "block")">
+                           }
+                        else
+                            {
+                        <div class="info-icon" id="infoIcon@(productIndex)" title="Ver detalhes do vendedor">
                             <i class="fas fa-info-circle"></i>
                         </div>
+                        }
 
-                        <!-- Ações de venda e exclusão para vendedores -->
                         @if (!produto.Vendido && isVendedor && produto.VendedorId == usuarioId.Value)
                         {
-                            <div class="mt-3">
-                                <form asp-action="MarcarComoVendido" method="post" class="d-inline">
-                                    <input type="hidden" name="id" value="@produto.ProdutoId" />
-                                    <button type="submit" class="btn btn-success btn-sm me-2">
-                                        <i class="fas fa-check me-1"></i>Marcar como vendido
-                                    </button>
-                                </form>
+                        <div class="mt-3">
+                            <form asp-action="MarcarComoVendido" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@produto.ProdutoId" />
+                                <button type="submit" class="btn btn-success btn-sm me-2">
+                                    <i class="fas fa-check me-1"></i>Marcar como vendido
+                                </button>
+                            </form>
 
-                                <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
-                                    <input type="hidden" name="id" value="@produto.ProdutoId" />
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash me-1"></i>Excluir
-                                    </button>
-                                </form>
-                            </div>
+                            <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
+                                <input type="hidden" name="id" value="@produto.ProdutoId" />
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash me-1"></i>Excluir
+                                </button>
+                            </form>
+                        </div>
                         }
                         else if (produto.Vendido)
                         {
-                            <div class="mt-3">
-                                <span class="badge bg-secondary">
-                                    <i class="fas fa-check me-1"></i>Vendido
-                                </span>
-                            </div>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">
+                                <i class="fas fa-check me-1"></i>Vendido
+                            </span>
+                        </div>
                         }
                     </div>
                 </div>
@@ -121,7 +121,6 @@
     </div>
 </section>
 
-<!-- Modal de Informação -->
 <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

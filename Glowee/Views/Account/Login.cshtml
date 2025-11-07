@@ -7,21 +7,18 @@
     <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 }
 
-<!-- Login Section -->
 <section class="login-section">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="login-container">
-                    <!-- Logo -->
+                  
                     <div class="login-logo">
                         <img src="~/images/branding/logo.png" alt="Glowee" class="login-logo-img" />
                     </div>
-
-                    <!-- Título -->
+                    
                     <h1 class="login-title">Acessar</h1>
 
-                    <!-- Formulário de Login -->
                     <form class="login-form" id="loginForm" asp-action="Login" method="post">
                         <div class="form-group">
                             <label for="email" class="form-label">E-mail</label>
@@ -43,7 +40,6 @@
                         </button>
                     </form>
 
-                    <!-- Link para Cadastro -->
                     <div class="login-footer">
                         <p class="login-footer-text">
                             Não tem uma conta?
@@ -51,7 +47,6 @@
                         </p>
                     </div>
 
-                    <!-- Mensagem de Erro -->
                     @if (ViewBag.Error != null)
                     {
                         <div class="form-error" style="text-align: center; margin-top: var(--space-md);">

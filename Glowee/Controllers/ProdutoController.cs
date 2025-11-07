@@ -78,10 +78,10 @@ namespace Glowee.Controllers
                 return View(produto);
             }
 
-            // Upload híbrido: local em desenvolvimento, Azure em produção
+            // Upload híbrido local em desenvolvimento, Azure em produção
             if (_environment.IsDevelopment())
             {
-                // Desenvolvimento: salvar localmente
+                // Desenvolvimento salva localmente
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
                 if (!Directory.Exists(uploadsFolder))
                 {
@@ -100,7 +100,7 @@ namespace Glowee.Controllers
             }
             else
             {
-                // Produção: usar Azure Blob Storage
+                // Produção usar Azure Blob Storage
                 produto.ImagemUrl = await _azureBlobService.UploadAsync(Imagem);
             }
             produto.VendedorId = vendedorId.Value;
@@ -218,6 +218,5 @@ namespace Glowee.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }

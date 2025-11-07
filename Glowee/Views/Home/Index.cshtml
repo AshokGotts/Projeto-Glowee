@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
 
-<!-- Hero Section -->
 <section class="hero-section">
     <div class="container-fluid">
         <div class="hero-banner">
             <div class="hero-slogan">
-                <img src="~/images/branding/logo.png" alt="Glowee" class="hero-logo mb-6" />
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/images/branding/logo.png" alt="Glowee" class="hero-logo mb-6" />
+                </a>
                 <h1 class="slogan-title">Sua pele merece esse brilho!</h1>
                 <p class="slogan-subtitle">
                     Dermocosméticos que celebram sua autenticidade e juventude natural
@@ -28,7 +29,6 @@
     </div>
 </section>
 
-<!-- Carrossel de Produtos -->
 <section id="produtos" class="products-carousel py-5">
     <div class="container-fluid">
         <div class="row section-content">
@@ -37,7 +37,6 @@
             </div>
         </div>
 
-        <!-- Carrossel Bootstrap -->
         <div id="productsCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#productsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

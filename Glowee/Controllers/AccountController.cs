@@ -24,9 +24,19 @@ namespace Glowee.Controllers
         {
             Console.WriteLine("Entrou no método Register");
 
+            // Força todo novo usuário a ser Cliente
+            user.Role = "Cliente";
+
             if (!ModelState.IsValid)
             {
-                Console.WriteLine(" Dados inválidos no formulário.");
+                Console.WriteLine("Dados inválidos no formulário.");
+                return View(user);
+            }
+
+            // Impede criação de usuário chamado root
+            if (user.Nome.Trim().ToLower() == "root")
+            {
+                ModelState.AddModelError("Nome", "O nome 'root' é reservado e não pode ser utilizado.");
                 return View(user);
             }
 
@@ -38,37 +48,19 @@ namespace Glowee.Controllers
                 return View(user);
             }
 
-            if (string.IsNullOrEmpty(user.Role))
-            {
-                ModelState.AddModelError("Role", "Selecione o tipo de usuário.");
-                return View(user);
-            }
-
             try
             {
                 _context.Users.Add(user);
                 _context.SaveChanges();
                 Console.WriteLine("Usuário salvo com sucesso!");
 
-                // 🔐 Login automático após cadastro
+                // Login automático após cadastro
                 HttpContext.Session.SetInt32("UsuarioId", user.UsuarioId);
                 HttpContext.Session.SetString("Role", user.Role);
                 HttpContext.Session.SetString("Nome", user.Nome);
 
-                // 🔄 Redirecionamento personalizado baseado no tipo de usuário
-                if (user.Role == "Vendedor")
-                {
-                    return RedirectToAction("MinhasVendas", "Venda");
-                }
-                else if (user.Role == "Cliente")
-                {
-                    return RedirectToAction("Index", "Produto");
-                }
-                else
-                {
-                    // Fallback para Home caso o role não seja reconhecido
-                    return RedirectToAction("Index", "Home");
-                }
+                // Redirecionamento para produtos (Cliente)
+                return RedirectToAction("Index", "Produto");
             }
             catch (Exception ex)
             {
@@ -86,14 +78,22 @@ namespace Glowee.Controllers
         public IActionResult Login(string email, string senha)
         {
             var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+
             if (user != null)
             {
-                // ✅ Salva o ID como inteiro, não como string
+                // Impede login do root se for necessário
+                /*if (user.Nome.Trim().ToLower() == "root")
+                {
+                    ViewBag.Error = "A conta 'root' não pode ser acessada por este login.";
+                    return View();
+                }*/
+
+                // Salva o ID e role na sessão
                 HttpContext.Session.SetInt32("UsuarioId", user.UsuarioId);
                 HttpContext.Session.SetString("Role", user.Role);
                 HttpContext.Session.SetString("Nome", user.Nome);
 
-                // 🔄 Redirecionamento personalizado baseado no tipo de usuário
+                // Redirecionamento
                 if (user.Role == "Vendedor")
                 {
                     return RedirectToAction("MinhasVendas", "Venda");
@@ -104,7 +104,6 @@ namespace Glowee.Controllers
                 }
                 else
                 {
-                    // Fallback para Home caso o role não seja reconhecido
                     return RedirectToAction("Index", "Home");
                 }
             }

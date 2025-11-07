@@ -3,7 +3,6 @@ using System;
 using Glowee.AppDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -12,55 +11,47 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Glowee.Migrations
 {
     [DbContext(typeof(GloweeDbContext))]
-    [Migration("20251006190939_FixProdutoControllerCrateMethod")]
-    partial class FixProdutoControllerCrateMethod
+    [Migration("20251106221104_AtualizaUsuarioId")]
+    partial class AtualizaUsuarioId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.9")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
 
             modelBuilder.Entity("Glowee.Models.Produto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProdutoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Categoria")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImagemUrl")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("VendaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("VendedorId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.Property<bool>("Vendido")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("VendaId");
+                    b.HasKey("ProdutoId");
 
                     b.HasIndex("VendedorId");
 
@@ -71,36 +62,34 @@ namespace Glowee.Migrations
                 {
                     b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TipoUsuario")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Users");
 
-                    b.HasDiscriminator().HasValue("User");
+                    b.HasDiscriminator<string>("TipoUsuario").HasValue("User");
 
                     b.UseTphMappingStrategy();
                 });
@@ -109,24 +98,27 @@ namespace Glowee.Migrations
                 {
                     b.Property<int>("VendaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VendaId"));
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DataVenda")
+                        .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<int?>("VendedorUsuarioId")
-                        .HasColumnType("int");
+                    b.Property<int?>("VendedorId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("VendaId");
 
                     b.HasIndex("ClienteId");
 
-                    b.HasIndex("VendedorUsuarioId");
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("VendedorId");
 
                     b.ToTable("Vendas");
                 });
@@ -138,23 +130,12 @@ namespace Glowee.Migrations
                     b.HasDiscriminator().HasValue("Cliente");
                 });
 
-            modelBuilder.Entity("Glowee.Models.Vendedor", b =>
-                {
-                    b.HasBaseType("Glowee.Models.User");
-
-                    b.HasDiscriminator().HasValue("Vendedor");
-                });
-
             modelBuilder.Entity("Glowee.Models.Produto", b =>
                 {
-                    b.HasOne("Glowee.Models.Venda", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("VendaId");
-
                     b.HasOne("Glowee.Models.User", "Vendedor")
                         .WithMany("Produtos")
                         .HasForeignKey("VendedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Vendedor");
@@ -162,36 +143,38 @@ namespace Glowee.Migrations
 
             modelBuilder.Entity("Glowee.Models.Venda", b =>
                 {
-                    b.HasOne("Glowee.Models.Cliente", "Cliente")
-                        .WithMany("Vendas")
+                    b.HasOne("Glowee.Models.User", "Cliente")
+                        .WithMany()
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Glowee.Models.Produto", "Produto")
+                        .WithMany("Vendas")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Glowee.Models.Vendedor", null)
+                    b.HasOne("Glowee.Models.User", "Vendedor")
                         .WithMany("Vendas")
-                        .HasForeignKey("VendedorUsuarioId");
+                        .HasForeignKey("VendedorId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Cliente");
+
+                    b.Navigation("Produto");
+
+                    b.Navigation("Vendedor");
+                });
+
+            modelBuilder.Entity("Glowee.Models.Produto", b =>
+                {
+                    b.Navigation("Vendas");
                 });
 
             modelBuilder.Entity("Glowee.Models.User", b =>
                 {
                     b.Navigation("Produtos");
-                });
 
-            modelBuilder.Entity("Glowee.Models.Venda", b =>
-                {
-                    b.Navigation("Produtos");
-                });
-
-            modelBuilder.Entity("Glowee.Models.Cliente", b =>
-                {
-                    b.Navigation("Vendas");
-                });
-
-            modelBuilder.Entity("Glowee.Models.Vendedor", b =>
-                {
                     b.Navigation("Vendas");
                 });
 #pragma warning restore 612, 618

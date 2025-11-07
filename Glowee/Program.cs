@@ -9,11 +9,19 @@ namespace Glowee
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<GloweeDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            {
+                if (builder.Environment.IsDevelopment())
+                {
+                    options.UseSqlite("Data Source=glowee-dev.db");
+                }
+                else
+                {
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                }
+            });
 
             builder.Services.AddSession();
 
@@ -23,7 +31,6 @@ namespace Glowee
 
             app.UseSession();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");

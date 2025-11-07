@@ -67,7 +67,7 @@ namespace Glowee.Controllers
 
             Console.WriteLine($"Vendas encontradas: {vendas.Count}");
 
-            return View(vendas); // Essa bagaça vai procurar Views/Venda/MinhasVendas.cshtml
+            return View(vendas); // Essa bagaça vai retornar Views/Venda/MinhasVendas.cshtml
         }
 
     }

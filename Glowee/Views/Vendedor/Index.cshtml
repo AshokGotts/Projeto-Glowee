@@ -1,55 +1,55 @@
 ﻿@model IEnumerable<Glowee.Models.User>
-@{
+    @{
     ViewData["Title"] = "Gerenciar Vendedores";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    }
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/manage-vendors.css" asp-append-version="true" />
-}
+    @section Styles {
+        <link rel="stylesheet" href="~/css/manage-vendors.css" asp-append-version="true" />
+    }
 
-<!-- Vendor Management Section -->
-<section class="manage-vendors-section">
-    <div class="container-fluid">
-        <div class="row section-content">
-            <div class="col-12">
-                <h1 class="manage-vendors-title text-center mb-5">Gerenciar Vendedores</h1>
+    <section class="manage-vendors-section">
+        <div class="container-fluid">
+            <div class="row section-content">
+                <div class="col-12 d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="manage-vendors-title">Gerenciar Vendedores</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastrarVendedorModal">
+                        <i class="fas fa-user-plus me-2"></i> Cadastrar Vendedor
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Mensagens de Sucesso/Erro -->
-        @if (TempData["Sucesso"] != null)
+            <!-- Mensagens de Sucesso/Erro -->
+            @if (TempData["Sucesso"] != null)
         {
             <div class="alert alert-success fw-bold text-center mb-4">@TempData["Sucesso"]</div>
         }
-        @if (TempData["Erro"] != null)
+            @if (TempData["Erro"] != null)
         {
             <div class="alert alert-danger fw-bold text-center mb-4">@TempData["Erro"]</div>
         }
 
-                <!-- Filters and Search -->
-        <div class="vendors-filters mb-4">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-8 col-lg-6 mb-3 mb-md-0">
-                    <div class="search-container">
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" id="vendorsSearch" class="form-control search-input" placeholder="Buscar vendedores..." />
+            <!-- Filtros e Busca -->
+            <div class="vendors-filters mb-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-8 col-lg-6 mb-3 mb-md-0">
+                        <div class="search-container">
+                            <div class="search-box">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" id="vendorsSearch" class="form-control search-input" placeholder="Buscar vendedores..." />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="results-info">
+                            <span id="resultsCount" class="results-text">Mostrando todos os vendedores</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12 col-lg-6">
-                    <div class="results-info">
-                        <span id="resultsCount" class="results-text">Mostrando todos os vendedores</span>
-                    </div>
-                </div>
             </div>
-        </div>
 
-        @if (!Model.Any())
+            @if (!Model.Any())
         {
-            <!-- No vendors message -->
             <div class="no-results">
                 <div class="no-results-content">
                     <i class="fas fa-users no-results-icon"></i>
@@ -62,7 +62,7 @@
         }
         else
         {
-            <!-- Vendors Table -->
+ <!-- Tabela de Vendedores -->
             <div class="vendors-table-container">
                 <div class="table-responsive">
                     <table class="table vendors-table" id="vendorsTable">
@@ -80,118 +80,116 @@
                                 var totalVendas = ViewBag.VendasPorVendedor != null && ViewBag.VendasPorVendedor.ContainsKey(vendedor.UsuarioId)
                                     ? ViewBag.VendasPorVendedor[vendedor.UsuarioId]
                                     : 0;
-                                
-                                <tr class="vendor-row">
-                                    <td class="vendor-name">
-                                        <div class="vendor-info">
-                                            <i class="fas fa-user-circle vendor-avatar"></i>
-                                            <span>@vendedor.Nome</span>
-                                        </div>
-                                    </td>
-                                    <td class="vendor-email">@vendedor.Email</td>
-                                    <td class="vendor-sales">
-                                        <span class="sales-count">@totalVendas vendas</span>
-                                        <span class="sales-total">R$ 0,00</span>
-                                    </td>
-                                    <td class="vendor-actions">
-                                        <form asp-action="Excluir" method="post" class="d-inline">
-                                            <input type="hidden" name="id" value="@vendedor.UsuarioId" />
-                                            <button type="button" class="btn btn-danger btn-sm delete-vendor" 
-                                                    data-vendor-id="@vendedor.UsuarioId" 
-                                                    data-vendor-name="@vendedor.Nome">
-                                                <i class="fas fa-trash me-1"></i>Excluir
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
+
+                            <tr class="vendor-row">
+                                <td class="vendor-name">
+                                    <div class="vendor-info">
+                                        <i class="fas fa-user-circle vendor-avatar"></i>
+                                        <span>@vendedor.Nome</span>
+                                    </div>
+                                </td>
+                                <td class="vendor-email">@vendedor.Email</td>
+                                <td class="vendor-sales">
+                                    <span class="sales-count">@totalVendas vendas</span>
+                                    <span class="sales-total">R$ 0,00</span>
+                                </td>
+                                <td class="vendor-actions">
+                                    <button type="button" class="btn btn-danger btn-sm delete-vendor"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal"
+                                            data-vendor-id="@vendedor.UsuarioId"
+                                            data-vendor-name="@vendedor.Nome">
+                                        <i class="fas fa-trash me-1"></i>Excluir
+                                    </button>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
+        }
+        </div>
+    </section>
 
-            <!-- Mobile Cards (hidden by default) -->
-            <div class="vendors-cards" id="vendorsCards" style="display: none">
-                @foreach (var vendedor in Model)
-                {
-                    var totalVendas = ViewBag.VendasPorVendedor != null && ViewBag.VendasPorVendedor.ContainsKey(vendedor.UsuarioId)
-                        ? ViewBag.VendasPorVendedor[vendedor.UsuarioId]
-                        : 0;
-                    
-                    <div class="vendor-card">
-                        <div class="vendor-card-header">
-                            <div class="vendor-card-info">
-                                <i class="fas fa-user-circle vendor-card-avatar"></i>
-                                <span class="vendor-card-name">@vendedor.Nome</span>
-                            </div>
-                            <form asp-action="Excluir" method="post" class="d-inline">
-                                <input type="hidden" name="id" value="@vendedor.UsuarioId" />
-                                <button type="button" class="btn btn-danger btn-sm delete-vendor" 
-                                        data-vendor-id="@vendedor.UsuarioId" 
-                                        data-vendor-name="@vendedor.Nome">
-                                    <i class="fas fa-trash me-1"></i>Excluir
-                                </button>
-                            </form>
+    <!-- Cadastro de um novo vendedor por um vendedor já criado -->
+    <div class="modal fade" id="cadastrarVendedorModal" tabindex="-1" aria-labelledby="cadastrarVendedorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="CadastrarVendedor" method="post">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="cadastrarVendedorLabel">Cadastrar Novo Vendedor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" name="nome" class="form-control" required />
                         </div>
-                        <div class="vendor-card-email">@vendedor.Email</div>
-                        <div class="vendor-card-sales">
-                            <div class="vendor-card-sales-info">
-                                <div class="vendor-card-sales-count">@totalVendas vendas</div>
-                                <div class="vendor-card-sales-total">R$ 0,00</div>
-                            </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">E-mail</label>
+                            <input type="email" name="email" class="form-control" required />
                         </div>
                     </div>
-                }
-            </div>
 
-            <!-- No results message (for filters) -->
-            <div class="no-results" id="noResults" style="display: none">
-                <div class="no-results-content">
-                    <i class="fas fa-users no-results-icon"></i>
-                    <h3 class="no-results-title">Nenhum vendedor encontrado</h3>
-                    <p class="no-results-text">
-                        Tente ajustar o termo de busca para encontrar vendedores.
-                    </p>
-                </div>
-            </div>
-        }
-    </div>
-</section>
-
-<!-- Modal de Confirmação de Exclusão -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">
-                    <i class="fas fa-exclamation-triangle me-2 text-warning"></i>Confirmar Exclusão
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Tem certeza que deseja excluir o vendedor
-                    <strong id="vendorNameToDelete"></strong>?
-                </p>
-                <p class="text-muted mb-0">
-                    Esta ação não pode ser desfeita e todos os dados do vendedor serão
-                    removidos permanentemente.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Cancelar
-                </button>
-                <button type="button" class="btn btn-danger" id="confirmDelete">
-                    <i class="fas fa-trash me-2"></i>Excluir
-                </button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    <script src="~/js/mobile-menu.js" asp-append-version="true"></script>
-    <script src="~/js/main.js" asp-append-version="true"></script>
-    <script src="~/js/manage-vendors.js" asp-append-version="true"></script>
-}
+    <!-- Confirmação de Exclusão -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form asp-action="Excluir" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">
+                            <i class="fas fa-exclamation-triangle me-2 text-warning"></i>Confirmar Exclusão
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Tem certeza que deseja excluir o vendedor
+                            <strong id="vendorNameToDelete"></strong>?
+                        </p>
+                        <p class="text-muted mb-0">
+                            Esta ação não pode ser desfeita e todos os dados do vendedor serão removidos permanentemente.
+                        </p>
+                        <input type="hidden" name="id" id="vendorIdToDelete" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash me-2"></i>Excluir
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script src="~/js/mobile-menu.js" asp-append-version="true"></script>
+        <script src="~/js/main.js" asp-append-version="true"></script>
+        <script src="~/js/manage-vendors.js" asp-append-version="true"></script>
+
+        <script>
+            // Exclusão com dados corretos
+            const deleteModal = document.getElementById('deleteModal');
+            deleteModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const vendorId = button.getAttribute('data-vendor-id');
+                const vendorName = button.getAttribute('data-vendor-name');
+
+                document.getElementById('vendorNameToDelete').textContent = vendorName;
+                document.getElementById('vendorIdToDelete').value = vendorId;
+            });
+        </script>
+    }

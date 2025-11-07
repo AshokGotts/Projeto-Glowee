@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
 }
 
-<!-- Registration Section -->
 <section class="register-section">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -53,15 +52,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="userType" class="form-label">Tipo de Usuário</label>
-                            <select id="userType" name="Role" asp-for="Role" class="form-control register-input" required>
-                                <option value="">Selecione o tipo de usuário</option>
-                                <option value="Cliente">Cliente</option>
-                                <option value="Vendedor">Vendedor</option>
-                            </select>
-                            <span asp-validation-for="Role" class="form-error"></span>
-                        </div>
+                        <!-- Campo oculto: o usuário sempre será Cliente -->
+                        <input type="hidden" name="Role" value="Cliente" />
 
                         <button type="submit" class="btn btn-primary register-btn">
                             Cadastrar
@@ -74,17 +66,18 @@
                             <a asp-controller="Account" asp-action="Login" class="register-footer-link">Fazer Login</a>
                         </p>
                     </div>
+
                     @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
                     {
-                        <div class="form-error" style="text-align: center; margin-top: var(--space-md);">
-                            <strong>Por favor, corrija os erros abaixo:</strong>
-                            <ul style="text-align: left; margin-top: var(--space-sm);">
-                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    <div class="form-error" style="text-align: center; margin-top: var(--space-md);">
+                        <strong>Por favor, corrija os erros abaixo:</strong>
+                        <ul style="text-align: left; margin-top: var(--space-sm);">
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
                                 {
-                                    <li>@error.ErrorMessage</li>
+                            <li>@error.ErrorMessage</li>
                                 }
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>
                     }
                 </div>
             </div>

@@ -1,4 +1,4 @@
-/* 🎨 Design System - Glowee */
+/* Design System - Glowee */
 :root {
   --primary-dark: #022b3a;
   --primary: #1f7a8c;
@@ -213,8 +213,6 @@ h6 {
 .mobile-menu-link:last-child {
   margin-bottom: 0;
 }
-
-/* ===== REGISTER PAGE STYLES ===== */
 
 /* Register Section */
 .register-section {
